@@ -1,0 +1,108 @@
+.export {
+  padding-block: var(--section);
+  background: var(--paper);
+  border-block: 1px solid var(--grout);
+}
+
+.export-grid {
+  display: grid;
+  gap: 48px;
+}
+
+.export-docs {
+  display: grid;
+  gap: 8px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--t-sm);
+}
+
+.export-docs li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.export-docs li::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  flex: none;
+  background: var(--ink);
+  border-radius: 1px;
+}
+
+.routes-head,
+.route {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.8fr) minmax(0, 1.2fr);
+  gap: 20px;
+  align-items: center;
+}
+
+.routes-head {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ink);
+  font-size: var(--t-xs);
+  color: var(--slate);
+}
+
+.route {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--grout);
+}
+
+.route-port {
+  display: grid;
+  line-height: 1.3;
+}
+
+.route-port strong {
+  font-weight: 650;
+}
+
+.route-port span {
+  font-size: var(--t-xs);
+  color: var(--slate);
+}
+
+.route-days {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.route-track {
+  flex: 1;
+  height: 10px;
+  background: var(--porcelain);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.route-fill {
+  display: block;
+  height: 100%;
+  background: var(--cobalt);
+  transform-origin: left;
+}
+
+.route-n {
+  width: 2ch;
+  text-align: end;
+  font-weight: 680;
+}
+
+.routes-note {
+  margin-top: 14px;
+  font-size: var(--t-xs);
+  color: var(--slate);
+}
+
+@media (min-width: 1024px) {
+  .export-grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 80px;
+  }
+}

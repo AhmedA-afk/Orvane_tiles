@@ -1,0 +1,232 @@
+.quote {
+  padding-block: var(--section);
+}
+
+.quote-grid {
+  display: grid;
+  gap: 40px;
+}
+
+.quote-form {
+  display: grid;
+  gap: 22px;
+  padding: clamp(20px, 3vw, 32px);
+  background: var(--paper);
+  border: 1px solid var(--grout);
+  border-radius: var(--edge);
+}
+
+.q-field {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+  align-content: start;
+}
+
+.q-field label,
+.q-field legend,
+.q-label {
+  padding: 0;
+  font-size: var(--t-sm);
+  font-weight: 620;
+}
+
+.q-field legend {
+  margin-bottom: 8px;
+}
+
+.q-optional {
+  font-weight: 400;
+  color: var(--slate);
+}
+
+.q-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.q-grow {
+  flex: 1 1 220px;
+}
+
+.q-input {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--grout);
+  border-radius: var(--edge);
+  background: var(--paper);
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.q-input:hover {
+  border-color: #b8bfc2;
+}
+
+.q-input:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 0;
+  border-color: var(--cobalt);
+}
+
+.q-input[aria-invalid='true'] {
+  border-color: #b4261a;
+}
+
+textarea.q-input {
+  resize: vertical;
+}
+
+.q-error {
+  font-size: var(--t-xs);
+  color: #b4261a;
+  font-weight: 560;
+}
+
+.q-designs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.q-designs:empty {
+  display: none;
+}
+
+.q-designs li {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 4px 4px 12px;
+  border-radius: var(--edge);
+  background: var(--cobalt-soft);
+  color: var(--cobalt);
+  font-size: var(--t-sm);
+  font-weight: 600;
+}
+
+.q-designs small {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.q-designs button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 2px;
+  background: none;
+  color: inherit;
+}
+
+.q-designs button:hover {
+  background: rgb(35 66 196 / 0.12);
+}
+
+.q-designs svg {
+  width: 14px;
+}
+
+.stepper {
+  display: inline-flex;
+  height: 42px;
+  border: 1px solid var(--grout);
+  border-radius: var(--edge);
+  overflow: hidden;
+}
+
+.stepper button {
+  width: 42px;
+  border: 0;
+  background: var(--porcelain);
+  font-size: 1.125rem;
+}
+
+.stepper button:hover {
+  background: var(--grout-soft);
+}
+
+.stepper input {
+  width: 52px;
+  border: 0;
+  text-align: center;
+  font-weight: 650;
+}
+
+.q-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  padding-top: 6px;
+}
+
+.q-mail {
+  font-size: var(--t-sm);
+  font-weight: 560;
+  text-underline-offset: 4px;
+}
+
+.q-sent {
+  overflow: hidden;
+  font-size: var(--t-sm);
+  color: var(--whatsapp);
+  font-weight: 560;
+}
+
+/* message preview */
+.q-preview {
+  align-self: start;
+  display: grid;
+  gap: 14px;
+}
+
+.q-preview-title {
+  font-size: var(--t-sm);
+  font-weight: 620;
+}
+
+.bubble {
+  position: relative;
+  padding: 14px 16px;
+  border-radius: 10px 10px 2px 10px;
+  background: #ddf3e4;
+  color: #12301f;
+  font-size: var(--t-sm);
+  line-height: 1.45;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.q-estimate {
+  font-size: var(--t-sm);
+  color: var(--slate);
+}
+
+.q-estimate strong {
+  color: var(--ink);
+}
+
+@media (min-width: 1024px) {
+  .quote-grid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: 32px 48px;
+  }
+  .quote-intro {
+    grid-column: 1 / -1;
+  }
+  .q-preview {
+    position: sticky;
+    top: 96px;
+  }
+}
