@@ -1,0 +1,401 @@
+/* The factory: the kiln in the dark, the line as a sideways scroll, the
+   numbers at full size, the certificates, and the visit in the dark again. */
+
+.fac-hero {
+  position: relative;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  background: var(--dark);
+  color: var(--dark-ink);
+}
+
+.fac-hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.fac-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 30% 50%;
+}
+
+/* a shade under the words, so they hold over the brightest part of the kiln */
+.fac-hero-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(5 5 6 / 0.82), rgb(5 5 6 / 0) 58%); /* taste-skill-ignore: legibility shade over a photograph */
+}
+
+.fac-kicker {
+  position: absolute;
+  top: 96px;
+  left: var(--m);
+  right: var(--m);
+  color: var(--dark-muted);
+}
+
+.fac-kicker span:first-child {
+  color: var(--dark-ink);
+}
+
+.fac-hero-text {
+  position: absolute;
+  left: var(--m);
+  right: var(--m);
+  bottom: clamp(32px, 6svh, 64px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 34ch);
+  align-items: end;
+  gap: 24px 48px;
+}
+
+.fac-title {
+  margin: 0;
+  font-size: clamp(3.5rem, 0.6rem + 9vw, 10.5rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 0.86;
+}
+
+.fac-title > span > span {
+  padding-right: 0.06em;
+}
+
+.fac-hero-text .lead {
+  margin: 0 0 0.4em;
+  color: #d4d4d0;
+}
+
+/* ---- the line: a sideways track, pinned while it passes ---- */
+.fac-line {
+  position: relative;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--m);
+  overflow: hidden;
+}
+
+/* the track slides inside the page margins, so nothing touches the screen edge */
+.fac-clip {
+  width: 100%;
+  overflow: hidden;
+}
+
+.fac-track {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(48px, 6vw, 112px);
+  width: max-content;
+  padding-top: 4svh;
+  will-change: transform;
+}
+
+.fac-intro {
+  flex: none;
+  align-self: center;
+  width: 38vw;
+}
+
+.fac-line-title {
+  margin: 14px 0 0;
+  font-size: clamp(4rem, 1rem + 12vw, 14rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.82;
+}
+
+.fac-station {
+  flex: none;
+  width: min-content;
+  display: grid;
+}
+
+.fac-station figure {
+  height: 50svh;
+  margin: 0 0 22px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--dark);
+}
+
+.fac-station figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fac-no {
+  margin: 0 0 8px;
+  color: var(--muted);
+}
+
+.fac-station .title {
+  margin: 0 0 10px;
+}
+
+.fac-text {
+  min-width: 30ch;
+  max-width: 36ch;
+  margin: 0;
+  color: var(--ink-2);
+}
+
+.fac-progress {
+  position: absolute;
+  left: var(--m);
+  right: var(--m);
+  bottom: 28px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  color: var(--muted);
+}
+
+.fac-progress span:last-child {
+  min-width: 7ch;
+  text-align: right;
+  color: var(--ink);
+}
+
+.fac-progress i {
+  position: relative;
+  display: block;
+  height: 1px;
+  background: var(--hair);
+}
+
+.fac-progress b {
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+/* ---- in numbers ---- */
+.fac-facts {
+  padding: clamp(120px, 20svh, 220px) var(--m) 0;
+}
+
+.fac-facts-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: clamp(40px, 7svh, 80px);
+}
+
+.fac-facts-head .head {
+  margin: 0;
+}
+
+.fac-facts dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid var(--hair);
+}
+
+.fac-facts dl > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  padding: 28px 28px 8px 0;
+}
+
+.fac-facts dl > div + div {
+  padding-left: 28px;
+  border-left: 1px solid var(--hair);
+}
+
+.fac-facts dd {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 14px;
+  font-size: clamp(3.5rem, 1rem + 6vw, 8rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+}
+
+.fac-facts dd small {
+  font-size: var(--s-title);
+  letter-spacing: -0.02em;
+  color: var(--muted);
+}
+
+.fac-facts dt {
+  max-width: 26ch;
+  color: var(--ink-2);
+}
+
+/* ---- certified ---- */
+.fac-trust {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
+  gap: clamp(32px, 6vw, 112px);
+  align-items: center;
+  padding: clamp(120px, 20svh, 220px) var(--m) 0;
+}
+
+.fac-trust-fig {
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--dark);
+}
+
+.fac-trust-fig img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fac-trust-body .head {
+  max-width: 12ch;
+  margin: 0;
+}
+
+.fac-lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin: clamp(36px, 6svh, 64px) 0 28px;
+}
+
+.fac-lists h3 {
+  margin: 0 0 14px;
+  font-weight: 400;
+}
+
+.fac-lists ul {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hair);
+}
+
+.fac-lists li {
+  display: grid;
+  gap: 2px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--hair);
+}
+
+.fac-item {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+/* ---- the visit ---- */
+.fac-visit {
+  position: relative;
+  display: grid;
+  align-content: end;
+  justify-items: start;
+  gap: 28px;
+  min-height: 100svh;
+  margin-top: clamp(120px, 20svh, 220px);
+  padding: 0 var(--m) clamp(40px, 7svh, 72px);
+  overflow: hidden;
+  background: var(--dark);
+  color: var(--dark-ink);
+}
+
+.fac-visit-bg {
+  position: absolute;
+  inset: -10% 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  object-position: 70% 50%;
+}
+
+.fac-visit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgb(5 5 6 / 0.85), rgb(5 5 6 / 0) 60%); /* taste-skill-ignore: legibility shade over a photograph */
+}
+
+.fac-visit > :not(img) {
+  position: relative;
+  z-index: 2;
+}
+
+.fac-visit-card {
+  --lg-tint: rgb(20 20 22 / 0.4);
+  --lg-edge: rgb(255 255 255 / 0.3);
+  --lg-ink: var(--dark-ink);
+  --lg-blur: 18px;
+  display: grid;
+  justify-items: start;
+  gap: 18px;
+  max-width: 420px;
+  padding: 24px;
+}
+
+.fac-visit-card p {
+  margin: 0;
+}
+
+@media (max-width: 899px) {
+  .fac-hero-text {
+    grid-template-columns: 1fr;
+  }
+  .fac-line {
+    height: auto;
+    display: block;
+    padding: 120px var(--m) 0;
+  }
+  .fac-track {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 64px;
+    width: auto;
+    padding: 0;
+  }
+  .fac-intro,
+  .fac-station {
+    width: auto;
+  }
+  .fac-station figure {
+    height: auto;
+  }
+  .fac-text {
+    min-width: 0;
+  }
+  .fac-progress {
+    display: none;
+  }
+  .fac-facts-head {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .fac-facts dl {
+    grid-template-columns: 1fr;
+  }
+  .fac-facts dl > div + div {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--hair);
+  }
+  .fac-trust {
+    grid-template-columns: 1fr;
+  }
+  .fac-lists {
+    grid-template-columns: 1fr;
+  }
+}

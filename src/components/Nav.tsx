@@ -1,170 +1,107 @@
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
-import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
-import { TLink } from '../motion/Transition'
-import { BRAND, LANGUAGES } from '../data/site'
 import { useQuote } from '../lib/quote'
-import { CloseIcon, GlobeIcon, Mark, MenuIcon } from './icons'
-import './Nav.css'
+import { TLink } from '../motion/Transition'
+import { LiquidGlass } from './LiquidGlass'
 
-const LINKS = [
-  { href: '/collections', label: 'Collections' },
-  { href: '/visualizer', label: 'Visualizer' },
-  { href: '/export', label: 'Container load' },
-  { href: '/factory', label: 'Factory' },
+// The site's navigation: the wordmark on the left, the sections in a pane of
+// liquid glass at the centre, the sample box on the right. Its ink follows the
+// chapter underneath (html[data-tone]). On a phone: the wordmark and a Menu
+// pane that opens a full-screen index.
+
+export const NAV_LINKS = [
+  { to: '/lines', label: 'Lines' },
+  { to: '/collections', label: 'Collection' },
+  { to: '/spaces', label: 'Spaces' },
+  { to: '/technology', label: 'Technology' },
+  { to: '/factory', label: 'Factory' },
+  { to: '/export', label: 'Export' },
 ]
 
 export function Nav() {
-  const { scrollY } = useScroll()
-  const [scrolled, setScrolled] = useState(false)
-  const [menu, setMenu] = useState(false)
-  const { items } = useQuote()
   const { pathname } = useLocation()
-
-  useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 12))
-
-  useEffect(() => {
-    document.body.style.overflow = menu ? 'hidden' : ''
-  }, [menu])
-
-  return (
-    <header className="nav" data-scrolled={scrolled || menu ? '' : undefined}>
-      <div className="wrap nav-row">
-        <TLink className="brand" to="/" aria-label={`${BRAND}, home`}>
-          <Mark className="brand-mark" />
-          <span>{BRAND}</span>
-        </TLink>
-
-        <nav className="nav-links" aria-label="Sections">
-          {LINKS.map((l) => (
-            <TLink key={l.href} to={l.href} aria-current={pathname === l.href ? 'page' : undefined}>
-              {l.label}
-            </TLink>
-          ))}
-        </nav>
-
-        <div className="nav-actions">
-          <LanguageMenu />
-          <a className="nav-dealer" href="#dealers">
-            Dealer login
-          </a>
-          <TLink className="btn btn-primary nav-quote" to="/quote">
-            <span className="nav-quote-long">Get a quote</span>
-            <span className="nav-quote-short">Quote</span>
-            <AnimatePresence initial={false} mode="popLayout">
-              {items.length > 0 && (
-                <motion.span
-                  key={items.length}
-                  className="nav-count num"
-                  initial={{ y: -12, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 12, opacity: 0 }}
-                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                  aria-label={`${items.length} designs in your quote`}
-                >
-                  {items.length}
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </TLink>
-          <button
-            className="nav-burger"
-            aria-label={menu ? 'Close menu' : 'Open menu'}
-            aria-expanded={menu}
-            onClick={() => setMenu((m) => !m)}
-          >
-            {menu ? <CloseIcon /> : <MenuIcon />}
-          </button>
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {menu && (
-          <motion.nav
-            className="nav-sheet"
-            aria-label="Sections"
-            initial={{ clipPath: 'inset(0 0 100% 0)' }}
-            animate={{ clipPath: 'inset(0 0 0% 0)' }}
-            exit={{ clipPath: 'inset(0 0 100% 0)' }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="wrap">
-              {[...LINKS, { href: '/quote', label: 'Get a quote' }].map((l, i) => (
-                <motion.div
-                  key={l.href}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.08 + i * 0.04, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <TLink to={l.href} onClick={() => setMenu(false)}>
-                    {l.label}
-                  </TLink>
-                </motion.div>
-              ))}
-              <p className="nav-sheet-langs">
-                {LANGUAGES.map((l) => (
-                  <span key={l.code} lang={l.code}>
-                    {l.label}
-                    {!l.ready && ' (soon)'}
-                  </span>
-                ))}
-              </p>
-            </div>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-    </header>
-  )
-}
-
-function LanguageMenu() {
+  const { items } = useQuote()
   const [open, setOpen] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
 
+  useEffect(() => setOpen(false), [pathname])
   useEffect(() => {
-    if (!open) return
-    const close = (e: PointerEvent | KeyboardEvent) => {
-      if (e instanceof KeyboardEvent ? e.key === 'Escape' : !ref.current?.contains(e.target as Node)) setOpen(false)
-    }
-    document.addEventListener('pointerdown', close)
-    document.addEventListener('keydown', close)
-    return () => {
-      document.removeEventListener('pointerdown', close)
-      document.removeEventListener('keydown', close)
-    }
+    document.documentElement.classList.toggle('menu-open', open)
   }, [open])
 
   return (
-    <div className="lang" ref={ref}>
-      <button className="lang-btn" aria-expanded={open} aria-haspopup="true" onClick={() => setOpen((o) => !o)}>
-        <GlobeIcon />
-        <span>EN</span>
-      </button>
+    <>
+      <header className="nav">
+        <TLink className="nav-mark" to="/" aria-label="Orvane Ceramica, home">
+          <svg viewBox="0 0 14 28" aria-hidden className="nav-glyph">
+            <rect x="0.75" y="0.75" width="12.5" height="26.5" rx="1" />
+          </svg>
+          <span>Orvane</span>
+        </TLink>
+
+        <LiquidGlass as="nav" className="nav-pill" strength={22}>
+          {NAV_LINKS.map((l) => (
+            <TLink key={l.to} to={l.to} aria-current={pathname.startsWith(l.to) ? 'page' : undefined} data-cursor="hover">
+              <span className="roll" data-text={l.label}>
+                {l.label}
+              </span>
+            </TLink>
+          ))}
+        </LiquidGlass>
+
+        <div className="nav-end">
+          <LiquidGlass className="nav-box" strength={18}>
+            <TLink to="/quote" data-cursor="hover" aria-label={`Sample box, ${items.length} designs`}>
+              <span>Sample box</span>
+              <AnimatePresence mode="popLayout" initial={false}>
+                <motion.b
+                  key={items.length}
+                  initial={{ y: -10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 10, opacity: 0 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                >
+                  {items.length}
+                </motion.b>
+              </AnimatePresence>
+            </TLink>
+          </LiquidGlass>
+          <LiquidGlass className="nav-menu" strength={16}>
+            <button aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+              {open ? 'Close' : 'Menu'}
+            </button>
+          </LiquidGlass>
+        </div>
+      </header>
+
       <AnimatePresence>
         {open && (
-          <motion.ul
-            className="lang-menu"
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.18 }}
+          <motion.div
+            className="sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
+            initial={{ clipPath: 'inset(0 0 100% 0 round 0 0 32px 32px)' }}
+            animate={{ clipPath: 'inset(0 0 0% 0 round 0 0 0px 0px)' }}
+            exit={{ clipPath: 'inset(0 0 100% 0 round 0 0 32px 32px)' }}
+            transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
           >
-            {LANGUAGES.map((l) => (
-              <li key={l.code}>
-                <button
-                  lang={l.code}
-                  disabled={!l.ready}
-                  aria-current={l.code === 'en' ? 'true' : undefined}
-                  onClick={() => setOpen(false)}
+            <nav aria-label="Site">
+              {[{ to: '/', label: 'Home' }, ...NAV_LINKS, { to: '/studio', label: 'Studio' }, { to: '/quote', label: 'Sample box' }].map((l, i) => (
+                <motion.span
+                  key={l.to}
+                  initial={{ y: '110%' }}
+                  animate={{ y: '0%' }}
+                  transition={{ delay: 0.18 + i * 0.05, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <span>{l.label}</span>
-                  {!l.ready && <small lang="en">Coming soon</small>}
-                </button>
-              </li>
-            ))}
-          </motion.ul>
+                  <TLink to={l.to}>{l.label}</TLink>
+                </motion.span>
+              ))}
+            </nav>
+            <p className="sheet-note">Orvane Ceramica is a demo company. Everything on this site is sample data.</p>
+          </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   )
 }

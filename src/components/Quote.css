@@ -1,81 +1,130 @@
-.quote {
-  padding-block: var(--section);
+/* Samples, prices, visits: the form on the left, the message it writes on the
+   right, as a chat that grows while you type. */
+.quote-page {
+  padding: clamp(120px, 19svh, 200px) var(--m) clamp(96px, 14svh, 160px);
+}
+
+.quote-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 34ch);
+  align-items: end;
+  gap: 28px 48px;
+  margin-bottom: clamp(56px, 10svh, 120px);
+}
+
+.quote-title {
+  margin: 0;
+  font-size: clamp(4rem, 0.8rem + 11vw, 12.5rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.84;
+}
+
+.quote-title > span > span {
+  padding-right: 0.06em;
+}
+
+.quote-head .lead {
+  margin: 0 0 0.5em;
+  color: var(--ink-2);
 }
 
 .quote-grid {
   display: grid;
-  gap: 40px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 112px);
+  align-items: start;
 }
 
 .quote-form {
   display: grid;
-  gap: 22px;
-  padding: clamp(20px, 3vw, 32px);
-  background: var(--paper);
-  border: 1px solid var(--grout);
-  border-radius: var(--edge);
+  gap: 34px;
 }
 
 .q-field {
   display: grid;
-  gap: 8px;
+  gap: 10px;
   margin: 0;
   padding: 0;
   border: 0;
   min-width: 0;
-  align-content: start;
 }
 
 .q-field label,
 .q-field legend,
 .q-label {
-  padding: 0;
-  font-size: var(--t-sm);
-  font-weight: 620;
+  font-family: var(--mono);
+  font-size: var(--s-micro);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .q-field legend {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .q-optional {
-  font-weight: 400;
-  color: var(--slate);
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .q-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 22px;
+  gap: 34px 20px;
 }
 
 .q-grow {
-  flex: 1 1 220px;
+  flex: 1 1 240px;
 }
 
+/* fields: soft filled wells with a ring that firms up on focus */
 .q-input {
   width: 100%;
-  min-height: 46px;
-  padding: 10px 12px;
-  border: 1px solid var(--grout);
-  border-radius: var(--edge);
-  background: var(--paper);
-  font-size: 1rem;
-  transition: border-color 0.2s;
+  min-height: 54px;
+  padding: 14px 18px;
+  border: 0;
+  border-radius: 16px;
+  background: rgb(11 11 12 / 0.05);
+  box-shadow: inset 0 0 0 1px transparent;
+  color: var(--ink);
+  font: 400 var(--s-body) / 1.4 var(--sans);
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.q-input::placeholder {
+  color: #96969a;
 }
 
 .q-input:hover {
-  border-color: #b8bfc2;
+  background: rgb(11 11 12 / 0.07);
 }
 
 .q-input:focus-visible {
-  outline: 2px solid var(--cobalt);
-  outline-offset: 0;
-  border-color: var(--cobalt);
+  outline: none;
+  background: #fff;
+  box-shadow:
+    inset 0 0 0 1.5px var(--ink),
+    0 8px 24px -12px rgb(0 0 0 / 0.2);
 }
 
 .q-input[aria-invalid='true'] {
-  border-color: #b4261a;
+  box-shadow: inset 0 0 0 1.5px #c4381e;
+}
+
+select.q-input {
+  appearance: none;
+  padding-right: 44px;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    calc(100% - 24px) 50%,
+    calc(100% - 19px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 textarea.q-input {
@@ -83,16 +132,28 @@ textarea.q-input {
 }
 
 .q-error {
-  font-size: var(--t-xs);
-  color: #b4261a;
-  font-weight: 560;
+  margin: 0;
+  font-size: var(--s-small);
+  color: #b4321a;
+}
+
+/* what you are asking for, at the size of a heading */
+.seg.q-ask {
+  justify-self: start;
+  padding: 5px;
+}
+
+.seg.q-ask button {
+  min-height: 48px;
+  padding: 0 22px;
+  font-size: 1rem;
 }
 
 .q-designs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+  gap: 8px;
+  margin: 0 0 6px;
   padding: 0;
   list-style: none;
 }
@@ -102,131 +163,223 @@ textarea.q-input {
 }
 
 .q-designs li {
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 4px;
-  padding: 4px 4px 4px 12px;
-  border-radius: var(--edge);
-  background: var(--cobalt-soft);
-  color: var(--cobalt);
-  font-size: var(--t-sm);
-  font-weight: 600;
+  gap: 14px;
+  padding: 6px 6px 6px 6px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgb(11 11 12 / 0.04);
+}
+
+.q-designs img {
+  width: 42px;
+  height: 56px;
+  border-radius: 11px;
+  object-fit: cover;
+  background: var(--bg-2);
+}
+
+.q-designs span {
+  font-weight: 500;
+  line-height: 1.25;
 }
 
 .q-designs small {
+  display: block;
+  margin-top: 3px;
   font-weight: 400;
-  opacity: 0.8;
+  color: var(--muted);
 }
 
 .q-designs button {
   display: grid;
   place-items: center;
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   border: 0;
-  border-radius: 2px;
+  border-radius: 50%;
   background: none;
-  color: inherit;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .q-designs button:hover {
-  background: rgb(35 66 196 / 0.12);
+  background: rgb(11 11 12 / 0.06);
+  color: var(--ink);
 }
 
 .q-designs svg {
-  width: 14px;
+  width: 16px;
+  height: 16px;
 }
 
 .stepper {
   display: inline-flex;
-  height: 42px;
-  border: 1px solid var(--grout);
-  border-radius: var(--edge);
-  overflow: hidden;
+  align-items: stretch;
+  height: 54px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgb(11 11 12 / 0.05);
 }
 
 .stepper button {
-  width: 42px;
+  width: 46px;
   border: 0;
-  background: var(--porcelain);
-  font-size: 1.125rem;
+  border-radius: 50%;
+  background: none;
+  color: var(--ink);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .stepper button:hover {
-  background: var(--grout-soft);
+  background: #fff;
 }
 
 .stepper input {
   width: 52px;
   border: 0;
+  background: none;
+  color: var(--ink);
   text-align: center;
-  font-weight: 650;
+  font: 500 var(--s-body) / 1 var(--sans);
+  font-variant-numeric: tabular-nums;
+}
+
+.quote .seg {
+  justify-self: start;
 }
 
 .q-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 12px 20px;
+  gap: 16px 28px;
   padding-top: 6px;
 }
 
-.q-mail {
-  font-size: var(--t-sm);
-  font-weight: 560;
-  text-underline-offset: 4px;
+.q-actions svg {
+  width: 18px;
+  height: 18px;
 }
 
 .q-sent {
+  margin: 0;
   overflow: hidden;
-  font-size: var(--t-sm);
-  color: var(--whatsapp);
-  font-weight: 560;
+  color: var(--ink-2);
 }
 
-/* message preview */
+/* the message, written as you go: a chat card with one growing bubble */
 .q-preview {
-  align-self: start;
+  position: sticky;
+  top: 96px;
+  display: grid;
+  gap: 18px;
+}
+
+.q-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 76px);
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.q-box img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
+  object-fit: cover;
+  background: var(--bg-2);
+}
+
+.q-chat {
   display: grid;
   gap: 14px;
+  padding: 18px 18px 16px;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow:
+    0 1px 0 rgb(11 11 12 / 0.04),
+    0 30px 60px -36px rgb(0 0 0 / 0.25);
 }
 
-.q-preview-title {
-  font-size: var(--t-sm);
-  font-weight: 620;
+.q-chat-head,
+.q-chat-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  padding: 0 6px;
+  color: var(--muted);
 }
 
+.q-chat-head span:first-child {
+  color: var(--ink);
+}
+
+.q-chat-foot {
+  justify-content: flex-end;
+}
+
+/* the bubble leans right, as a sent message does, and keeps a tail */
 .bubble {
   position: relative;
-  padding: 14px 16px;
-  border-radius: 10px 10px 2px 10px;
-  background: #ddf3e4;
-  color: #12301f;
-  font-size: var(--t-sm);
-  line-height: 1.45;
-  overflow: hidden;
-  overflow-wrap: anywhere;
+  display: grid;
+  gap: 4px;
+  margin-left: clamp(0px, 4vw, 40px);
+  padding: 20px 22px 22px;
+  border-radius: 24px 24px 8px 24px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: var(--s-body);
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.bubble p {
+  margin: 0;
+}
+
+.bubble p:first-child {
+  margin-bottom: 8px;
+  font-size: 1.1875rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
 }
 
 .q-estimate {
-  font-size: var(--t-sm);
-  color: var(--slate);
+  margin: 0;
+  color: var(--muted);
 }
 
 .q-estimate strong {
   color: var(--ink);
+  font-weight: 500;
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 899px) {
+  .quote-head,
   .quote-grid {
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
-    gap: 32px 48px;
-  }
-  .quote-intro {
-    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
   }
   .q-preview {
-    position: sticky;
-    top: 96px;
+    position: static;
+  }
+  .seg.q-ask {
+    justify-self: stretch;
+    display: flex;
+    overflow-x: auto;
+  }
+  .seg.q-ask button {
+    flex: 1 1 auto;
+    min-height: 42px;
+    padding: 0 8px;
+    font-size: 0.78125rem;
   }
 }

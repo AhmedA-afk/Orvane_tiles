@@ -6,18 +6,23 @@ import { useEffect, type RefObject } from 'react'
 
 type Gsap = typeof import('gsap').gsap
 type ST = typeof import('gsap/ScrollTrigger').ScrollTrigger
+type Split = typeof import('gsap/SplitText').SplitText
 
 export let gsap: Gsap = null as unknown as Gsap
 export let ScrollTrigger: ST = null as unknown as ST
+export let SplitText: Split = null as unknown as Split
 
 let loading: Promise<void> | null = null
 export function whenGsap() {
-  loading ||= Promise.all([import('gsap'), import('gsap/ScrollTrigger')]).then(([g, st]) => {
-    gsap = g.gsap
-    ScrollTrigger = st.ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger)
-    gsap.defaults({ ease: 'expo.out' })
-  })
+  loading ||= Promise.all([import('gsap'), import('gsap/ScrollTrigger'), import('gsap/SplitText')]).then(
+    ([g, st, sp]) => {
+      gsap = g.gsap
+      ScrollTrigger = st.ScrollTrigger
+      SplitText = sp.SplitText
+      gsap.registerPlugin(ScrollTrigger, SplitText)
+      gsap.defaults({ ease: 'expo.out' })
+    },
+  )
   return loading
 }
 

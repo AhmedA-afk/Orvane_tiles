@@ -1,61 +1,108 @@
 import { MotionConfig } from 'motion/react'
 import { useEffect } from 'react'
-import { Route, Routes, useLocation } from 'react-router'
-import { Footer } from './components/Footer'
+import { Navigate, Route, Routes, useLocation } from 'react-router'
+import { Cursor } from './components/Cursor'
 import { Nav } from './components/Nav'
+import { Preloader } from './components/Preloader'
+import { SiteFooter } from './components/SiteFooter'
+import { setRevealed, usePageReady } from './lib/ready'
 import { QuoteProvider } from './lib/quote'
-import { ScrollRail } from './motion/ScrollRail'
 import { SmoothScroll } from './motion/SmoothScroll'
 import { TransitionProvider } from './motion/Transition'
 import Collections from './pages/Collections'
+import DesignPage from './pages/DesignPage'
+import Lines, { LinePage } from './pages/Lines'
+import { designById, LINES } from './data/range'
 import ExportPage from './pages/ExportPage'
 import FactoryPage from './pages/FactoryPage'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import QuotePage from './pages/QuotePage'
-import VisualizerPage from './pages/VisualizerPage'
+import ScalePage from './pages/ScalePage'
+import VeinPage from './pages/VeinPage'
+import SurfaceLab from './pages/SurfaceLab'
+import Technology from './pages/Technology'
+import Spaces, { SpacePage } from './pages/Spaces'
+import { spaceById } from './data/spaces'
+import StudioPage from './pages/StudioPage'
+import PhotoStudio from './pages/PhotoStudio'
+import UploadPage from './pages/UploadPage'
+import InsightsPage from './pages/InsightsPage'
 
 const TITLES: Record<string, string> = {
-  '/': 'PGVT and Porcelain Tiles Manufacturer in Morbi, India',
-  '/collections': 'Tile Collections: GVT, PGVT, Double Charge and Porcelain',
-  '/visualizer': 'Tile Visualizer',
-  '/export': 'Container Load Calculator and Export Shipping',
-  '/factory': 'Our Factory in Morbi',
-  '/quote': 'Container Quote on WhatsApp',
+  '/': 'Porcelain Slabs from Morbi, India',
+  '/collections': 'The Collection',
+  '/lines': 'The Lines',
+  '/studio': 'Orvane Studio, a Room to Lay Stone In',
+  '/studio/photo': 'Your Room, in Stone',
+  '/studio/upload': 'Your Design, in a Room',
+  '/studio/insights': 'Studio Insights',
+  '/export': 'Export and Container Loading',
+  '/factory': 'The Factory in Morbi',
+  '/quote': 'Samples, Prices and Visits',
+  '/spaces': 'Spaces',
+  '/technology': 'Technology',
+  '/technology/scale': 'The Largest Slab, 1800 × 3600 mm',
+  '/technology/surface-lab': 'Surface Lab',
+  '/technology/vein': 'Continuous Vein and Bookmatching',
 }
 
 function PageTitle() {
   const { pathname } = useLocation()
   useEffect(() => {
-    document.title = `${TITLES[pathname] ?? 'Page not found'} | Morbi Tiles Market`
+    const [, a, b] = pathname.split('/')
+    const named =
+      a === 'collections' && b
+        ? designById(b)?.name
+        : a === 'lines' && b
+          ? LINES.find((l) => l.id === b)?.name
+          : a === 'spaces' && b
+            ? spaceById(b)?.name
+            : undefined
+    document.title = `${named ?? TITLES[pathname] ?? 'Page not found'} | Orvane Ceramica`
   }, [pathname])
   return null
 }
 
 export default function App() {
+  const ready = usePageReady()
   return (
     <MotionConfig reducedMotion="user">
       <QuoteProvider>
         <TransitionProvider>
           <PageTitle />
           <SmoothScroll />
-          <ScrollRail />
           <a className="skip" href="#main">
             Skip to content
           </a>
+          <Preloader ready={ready} onDone={setRevealed} />
+          <Cursor />
           <Nav />
           <main id="main">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/collections" element={<Collections />} />
-              <Route path="/visualizer" element={<VisualizerPage />} />
+              <Route path="/collections/:id" element={<DesignPage />} />
+              <Route path="/lines" element={<Lines />} />
+              <Route path="/lines/:id" element={<LinePage />} />
+              <Route path="/spaces" element={<Spaces />} />
+              <Route path="/spaces/:id" element={<SpacePage />} />
+              <Route path="/technology" element={<Technology />} />
+              <Route path="/technology/scale" element={<ScalePage />} />
+              <Route path="/technology/vein" element={<VeinPage />} />
+              <Route path="/technology/surface-lab" element={<SurfaceLab />} />
+              <Route path="/studio" element={<StudioPage />} />
+              <Route path="/studio/photo" element={<PhotoStudio />} />
+              <Route path="/studio/upload" element={<UploadPage />} />
+              <Route path="/studio/insights" element={<InsightsPage />} />
+              <Route path="/visualizer" element={<Navigate to="/studio" replace />} />
               <Route path="/export" element={<ExportPage />} />
               <Route path="/factory" element={<FactoryPage />} />
               <Route path="/quote" element={<QuotePage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
-          <Footer />
+          <SiteFooter />
         </TransitionProvider>
       </QuoteProvider>
     </MotionConfig>

@@ -1,0 +1,1480 @@
+{
+ "statuario": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "bianco",
+    "name": "Bianco",
+    "file": "statuario.webp",
+    "swatch": "#f3f2f0",
+    "family": "White"
+   },
+   {
+    "slug": "caldo",
+    "name": "Caldo",
+    "file": "statuario--caldo.webp",
+    "swatch": "#f9f1e5",
+    "family": "Cream"
+   },
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "statuario--grigio.webp",
+    "swatch": "#e1e1e1",
+    "family": "White"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "calacatta": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "oro",
+    "name": "Oro",
+    "file": "calacatta.webp",
+    "swatch": "#d0c4b0",
+    "family": "White"
+   },
+   {
+    "slug": "bianco",
+    "name": "Bianco",
+    "file": "calacatta--bianco.webp",
+    "swatch": "#c7c5c3",
+    "family": "White"
+   },
+   {
+    "slug": "viola",
+    "name": "Viola",
+    "file": "calacatta--viola.webp",
+    "swatch": "#c8c1c2",
+    "family": "White"
+   },
+   {
+    "slug": "verde",
+    "name": "Verde",
+    "file": "calacatta--verde.webp",
+    "swatch": "#c3c6c0",
+    "family": "White"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "nero": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "nero",
+    "name": "Nero",
+    "file": "nero.webp",
+    "swatch": "#3d3e3e",
+    "family": "Black"
+   },
+   {
+    "slug": "notte",
+    "name": "Notte",
+    "file": "nero--notte.webp",
+    "swatch": "#364047",
+    "family": "Black"
+   },
+   {
+    "slug": "bosco",
+    "name": "Bosco",
+    "file": "nero--bosco.webp",
+    "swatch": "#36413b",
+    "family": "Black"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "lasa": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "bianco",
+    "name": "Bianco",
+    "file": "lasa.webp",
+    "swatch": "#dfdcd6",
+    "family": "White"
+   },
+   {
+    "slug": "caldo",
+    "name": "Caldo",
+    "file": "lasa--caldo.webp",
+    "swatch": "#e5dbcc",
+    "family": "Cream"
+   },
+   {
+    "slug": "oro",
+    "name": "Oro",
+    "file": "lasa--oro.webp",
+    "swatch": "#e2dcd2",
+    "family": "White"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "arabescato": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "bianco",
+    "name": "Bianco",
+    "file": "arabescato.webp",
+    "swatch": "#e9eaea",
+    "family": "White"
+   },
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "arabescato--grigio.webp",
+    "swatch": "#d9d9d9",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "emperador": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "scuro",
+    "name": "Scuro",
+    "file": "emperador.webp",
+    "swatch": "#5c5249",
+    "family": "Brown"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "emperador--chiaro.webp",
+    "swatch": "#72685f",
+    "family": "Brown"
+   },
+   {
+    "slug": "profondo",
+    "name": "Profondo",
+    "file": "emperador--profondo.webp",
+    "swatch": "#2e261d",
+    "family": "Black"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "portoro": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "nero",
+    "name": "Nero",
+    "file": "portoro.webp",
+    "swatch": "#181919",
+    "family": "Black"
+   },
+   {
+    "slug": "oro",
+    "name": "Oro",
+    "file": "portoro--oro.webp",
+    "swatch": "#181919",
+    "family": "Black"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "taupe": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "taupe",
+    "name": "Taupe",
+    "file": "taupe.webp",
+    "swatch": "#b1a395",
+    "family": "Taupe"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "taupe--chiaro.webp",
+    "swatch": "#cabbad",
+    "family": "Taupe"
+   },
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "taupe--grigio.webp",
+    "swatch": "#999591",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "ambra": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "ambra",
+    "name": "Ambra",
+    "file": "ambra.webp",
+    "swatch": "#977554",
+    "family": "Gold"
+   },
+   {
+    "slug": "miele",
+    "name": "Miele",
+    "file": "ambra--miele.webp",
+    "swatch": "#976f47",
+    "family": "Gold"
+   },
+   {
+    "slug": "scuro",
+    "name": "Scuro",
+    "file": "ambra--scuro.webp",
+    "swatch": "#775838",
+    "family": "Brown"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "onice": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "verde",
+    "name": "Verde",
+    "file": "onice.webp",
+    "swatch": "#a0a86d",
+    "family": "Green"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "onice--chiaro.webp",
+    "swatch": "#b8c184",
+    "family": "Green"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "miele": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "miele",
+    "name": "Miele",
+    "file": "miele.webp",
+    "swatch": "#ba926e",
+    "family": "Gold"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "miele--chiaro.webp",
+    "swatch": "#d3aa84",
+    "family": "Gold"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "azzurro": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "azzurro",
+    "name": "Azzurro",
+    "file": "azzurro.webp",
+    "swatch": "#767b7a",
+    "family": "Blue"
+   },
+   {
+    "slug": "scuro",
+    "name": "Scuro",
+    "file": "azzurro--scuro.webp",
+    "swatch": "#585d5c",
+    "family": "Blue"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "onice-rosso": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "rosso",
+    "name": "Rosso",
+    "file": "onice-rosso.webp",
+    "swatch": "#93776b",
+    "family": "Red"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "onice-rosso--chiaro.webp",
+    "swatch": "#ab8e82",
+    "family": "Pink"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "pavone": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "pavone",
+    "name": "Pavone",
+    "file": "pavone.webp",
+    "swatch": "#636860",
+    "family": "Blue"
+   },
+   {
+    "slug": "scuro",
+    "name": "Scuro",
+    "file": "pavone--scuro.webp",
+    "swatch": "#474b44",
+    "family": "Blue"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "onice-nero": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "nero",
+    "name": "Nero",
+    "file": "onice-nero.webp",
+    "swatch": "#36322c",
+    "family": "Black"
+   },
+   {
+    "slug": "oro",
+    "name": "Oro",
+    "file": "onice-nero--oro.webp",
+    "swatch": "#36322b",
+    "family": "Black"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "onice-bianco": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "bianco",
+    "name": "Bianco",
+    "file": "onice-bianco.webp",
+    "swatch": "#cecbc8",
+    "family": "White"
+   },
+   {
+    "slug": "caldo",
+    "name": "Caldo",
+    "file": "onice-bianco--caldo.webp",
+    "swatch": "#d4cabe",
+    "family": "Cream"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "tramonto": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "tramonto",
+    "name": "Tramonto",
+    "file": "tramonto.webp",
+    "swatch": "#a99479",
+    "family": "Multi"
+   },
+   {
+    "slug": "tenue",
+    "name": "Tenue",
+    "file": "tramonto--tenue.webp",
+    "swatch": "#a29687",
+    "family": "Multi"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "guatemala": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "verde",
+    "name": "Verde",
+    "file": "guatemala.webp",
+    "swatch": "#101614",
+    "family": "Green"
+   },
+   {
+    "slug": "notte",
+    "name": "Notte",
+    "file": "guatemala--notte.webp",
+    "swatch": "#081823",
+    "family": "Green"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "rosa": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "rosa",
+    "name": "Rosa",
+    "file": "rosa.webp",
+    "swatch": "#a39592",
+    "family": "Pink"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "rosa--chiaro.webp",
+    "swatch": "#bcadaa",
+    "family": "Pink"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "cielo": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "cielo",
+    "name": "Cielo",
+    "file": "cielo.webp",
+    "swatch": "#afb6c8",
+    "family": "Blue"
+   },
+   {
+    "slug": "tenue",
+    "name": "Tenue",
+    "file": "cielo--tenue.webp",
+    "swatch": "#b2b6c0",
+    "family": "Blue"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "oceano": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "oceano",
+    "name": "Oceano",
+    "file": "oceano.webp",
+    "swatch": "#575e63",
+    "family": "Blue"
+   },
+   {
+    "slug": "notte",
+    "name": "Notte",
+    "file": "oceano--notte.webp",
+    "swatch": "#525f69",
+    "family": "Blue"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "bardiglio": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "bardiglio.webp",
+    "swatch": "#acadb5",
+    "family": "Grey"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "bardiglio--chiaro.webp",
+    "swatch": "#c4c6ce",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "armani": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "armani.webp",
+    "swatch": "#8f847a",
+    "family": "Taupe"
+   },
+   {
+    "slug": "caldo",
+    "name": "Caldo",
+    "file": "armani--caldo.webp",
+    "swatch": "#938471",
+    "family": "Taupe"
+   },
+   {
+    "slug": "scuro",
+    "name": "Scuro",
+    "file": "armani--scuro.webp",
+    "swatch": "#70675c",
+    "family": "Brown"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "grigio-perla": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "perla",
+    "name": "Perla",
+    "file": "grigio-perla.webp",
+    "swatch": "#d7d7d7",
+    "family": "Grey"
+   },
+   {
+    "slug": "caldo",
+    "name": "Caldo",
+    "file": "grigio-perla--caldo.webp",
+    "swatch": "#ded6cd",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "delicato": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "crema",
+    "name": "Crema",
+    "file": "delicato.webp",
+    "swatch": "#e5ddd3",
+    "family": "Cream"
+   },
+   {
+    "slug": "bianco",
+    "name": "Bianco",
+    "file": "delicato--bianco.webp",
+    "swatch": "#e0dedb",
+    "family": "White"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "botticino": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "crema",
+    "name": "Crema",
+    "file": "botticino.webp",
+    "swatch": "#d8cdba",
+    "family": "Cream"
+   },
+   {
+    "slug": "sabbia",
+    "name": "Sabbia",
+    "file": "botticino--sabbia.webp",
+    "swatch": "#deccb0",
+    "family": "Cream"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "nube": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "nube",
+    "name": "Nube",
+    "file": "nube.webp",
+    "swatch": "#7d8287",
+    "family": "Grey"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "nube--chiaro.webp",
+    "swatch": "#949a9e",
+    "family": "Grey"
+   },
+   {
+    "slug": "scuro",
+    "name": "Scuro",
+    "file": "nube--scuro.webp",
+    "swatch": "#5f6469",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "carrara": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "bianco",
+    "name": "Bianco",
+    "file": "carrara.webp",
+    "swatch": "#e3e7ea",
+    "family": "White"
+   },
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "carrara--grigio.webp",
+    "swatch": "#d4d6d7",
+    "family": "White"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "pietra": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "pietra.webp",
+    "swatch": "#575757",
+    "family": "Grey"
+   },
+   {
+    "slug": "profondo",
+    "name": "Profondo",
+    "file": "pietra--profondo.webp",
+    "swatch": "#2a2a2a",
+    "family": "Black"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "sale-pepe": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "sale-pepe.webp",
+    "swatch": "#b5b2ad",
+    "family": "Grey"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "sale-pepe--chiaro.webp",
+    "swatch": "#cdcac5",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "rubino": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "rubino",
+    "name": "Rubino",
+    "file": "rubino.webp",
+    "swatch": "#8b5e42",
+    "family": "Red"
+   },
+   {
+    "slug": "scuro",
+    "name": "Scuro",
+    "file": "rubino--scuro.webp",
+    "swatch": "#6c4127",
+    "family": "Red"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "azul": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "azul",
+    "name": "Azul",
+    "file": "azul.webp",
+    "swatch": "#a1999a",
+    "family": "Blue"
+   },
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "azul--grigio.webp",
+    "swatch": "#9c9b9b",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "bianco-puro": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "bianco",
+    "name": "Bianco",
+    "file": "bianco-puro.webp",
+    "swatch": "#f6f9f8",
+    "family": "White"
+   },
+   {
+    "slug": "caldo",
+    "name": "Caldo",
+    "file": "bianco-puro--caldo.webp",
+    "swatch": "#fdf8ec",
+    "family": "White"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "nero-assoluto": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "nero",
+    "name": "Nero",
+    "file": "nero-assoluto.webp",
+    "swatch": "#1d2220",
+    "family": "Black"
+   },
+   {
+    "slug": "grafite",
+    "name": "Grafite",
+    "file": "nero-assoluto--grafite.webp",
+    "swatch": "#303533",
+    "family": "Black"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "crema": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "crema",
+    "name": "Crema",
+    "file": "crema.webp",
+    "swatch": "#bbb6b0",
+    "family": "Cream"
+   },
+   {
+    "slug": "bianco",
+    "name": "Bianco",
+    "file": "crema--bianco.webp",
+    "swatch": "#b6b7b8",
+    "family": "White"
+   }
+  ],
+  "aspect": 1.0
+ },
+ "ivory": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "ivory",
+    "name": "Ivory",
+    "file": "ivory.webp",
+    "swatch": "#aea38b",
+    "family": "Cream"
+   },
+   {
+    "slug": "sabbia",
+    "name": "Sabbia",
+    "file": "ivory--sabbia.webp",
+    "swatch": "#b3a281",
+    "family": "Cream"
+   }
+  ],
+  "aspect": 1.0
+ },
+ "trav-bianco": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "bianco",
+    "name": "Bianco",
+    "file": "trav-bianco.webp",
+    "swatch": "#dfcbab",
+    "family": "Cream"
+   },
+   {
+    "slug": "caldo",
+    "name": "Caldo",
+    "file": "trav-bianco--caldo.webp",
+    "swatch": "#e3caa1",
+    "family": "Cream"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "argento": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "argento",
+    "name": "Argento",
+    "file": "argento.webp",
+    "swatch": "#74767c",
+    "family": "Grey"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "argento--chiaro.webp",
+    "swatch": "#8b8d93",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "celeste": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "celeste",
+    "name": "Celeste",
+    "file": "celeste.webp",
+    "swatch": "#8b9fab",
+    "family": "Blue"
+   },
+   {
+    "slug": "tenue",
+    "name": "Tenue",
+    "file": "celeste--tenue.webp",
+    "swatch": "#939ea4",
+    "family": "Blue"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "onice-perla": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "perla",
+    "name": "Perla",
+    "file": "onice-perla.webp",
+    "swatch": "#c8c1b0",
+    "family": "White"
+   },
+   {
+    "slug": "bianco",
+    "name": "Bianco",
+    "file": "onice-perla--bianco.webp",
+    "swatch": "#c3c2bf",
+    "family": "White"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "travertino": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "classico",
+    "name": "Classico",
+    "file": "travertino.webp",
+    "swatch": "#a39584",
+    "family": "Beige"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "travertino--chiaro.webp",
+    "swatch": "#bbad9c",
+    "family": "Beige"
+   },
+   {
+    "slug": "scuro",
+    "name": "Scuro",
+    "file": "travertino--scuro.webp",
+    "swatch": "#837666",
+    "family": "Taupe"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "noce": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "noce",
+    "name": "Noce",
+    "file": "noce.webp",
+    "swatch": "#5f5147",
+    "family": "Brown"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "noce--chiaro.webp",
+    "swatch": "#76675c",
+    "family": "Brown"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "trav-oro": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "oro",
+    "name": "Oro",
+    "file": "trav-oro.webp",
+    "swatch": "#af9355",
+    "family": "Gold"
+   },
+   {
+    "slug": "tenue",
+    "name": "Tenue",
+    "file": "trav-oro--tenue.webp",
+    "swatch": "#a69573",
+    "family": "Beige"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "lavato": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "lavato.webp",
+    "swatch": "#727e88",
+    "family": "Grey"
+   },
+   {
+    "slug": "caldo",
+    "name": "Caldo",
+    "file": "lavato--caldo.webp",
+    "swatch": "#797d7e",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "ciottolo": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "ciottolo",
+    "name": "Ciottolo",
+    "file": "ciottolo.webp",
+    "swatch": "#abac91",
+    "family": "Beige"
+   },
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "ciottolo--grigio.webp",
+    "swatch": "#aaaba7",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "sabbia": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "sabbia",
+    "name": "Sabbia",
+    "file": "sabbia.webp",
+    "swatch": "#827963",
+    "family": "Beige"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "sabbia--chiaro.webp",
+    "swatch": "#9a9179",
+    "family": "Beige"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "basalto": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "basalto",
+    "name": "Basalto",
+    "file": "basalto.webp",
+    "swatch": "#4f4c41",
+    "family": "Black"
+   },
+   {
+    "slug": "grafite",
+    "name": "Grafite",
+    "file": "basalto--grafite.webp",
+    "swatch": "#656157",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "ardesia": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "ardesia",
+    "name": "Ardesia",
+    "file": "ardesia.webp",
+    "swatch": "#a09c9a",
+    "family": "Grey"
+   },
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "ardesia--grigio.webp",
+    "swatch": "#9d9d9c",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "rovere": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "naturale",
+    "name": "Naturale",
+    "file": "rovere.webp",
+    "swatch": "#a0795a",
+    "family": "Beige"
+   },
+   {
+    "slug": "sbiancato",
+    "name": "Sbiancato",
+    "file": "rovere--sbiancato.webp",
+    "swatch": "#b59f91",
+    "family": "Beige"
+   },
+   {
+    "slug": "fume",
+    "name": "Fumé",
+    "file": "rovere--fume.webp",
+    "swatch": "#735944",
+    "family": "Brown"
+   }
+  ],
+  "aspect": 0.1667
+ },
+ "teak": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "antico",
+    "name": "Antico",
+    "file": "teak.webp",
+    "swatch": "#583313",
+    "family": "Brown"
+   },
+   {
+    "slug": "miele",
+    "name": "Miele",
+    "file": "teak--miele.webp",
+    "swatch": "#542e07",
+    "family": "Brown"
+   }
+  ],
+  "aspect": 0.1667
+ },
+ "rovere-bianco": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "bianco",
+    "name": "Bianco",
+    "file": "rovere-bianco.webp",
+    "swatch": "#a28a6a",
+    "family": "Beige"
+   },
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "rovere-bianco--grigio.webp",
+    "swatch": "#918d8a",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.1667
+ },
+ "fume": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "fume",
+    "name": "Fumé",
+    "file": "fume.webp",
+    "swatch": "#4f3f32",
+    "family": "Brown"
+   },
+   {
+    "slug": "profondo",
+    "name": "Profondo",
+    "file": "fume--profondo.webp",
+    "swatch": "#231407",
+    "family": "Black"
+   }
+  ],
+  "aspect": 0.1667
+ },
+ "canaletto": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "noce",
+    "name": "Noce",
+    "file": "canaletto.webp",
+    "swatch": "#6b3b18",
+    "family": "Brown"
+   },
+   {
+    "slug": "miele",
+    "name": "Miele",
+    "file": "canaletto--miele.webp",
+    "swatch": "#643803",
+    "family": "Brown"
+   },
+   {
+    "slug": "scuro",
+    "name": "Scuro",
+    "file": "canaletto--scuro.webp",
+    "swatch": "#4c2002",
+    "family": "Brown"
+   }
+  ],
+  "aspect": 0.1667
+ },
+ "wenge": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "wenge",
+    "name": "Wengé",
+    "file": "wenge.webp",
+    "swatch": "#2f2018",
+    "family": "Black"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "wenge--chiaro.webp",
+    "swatch": "#43342a",
+    "family": "Brown"
+   }
+  ],
+  "aspect": 0.1667
+ },
+ "frassino": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "frassino.webp",
+    "swatch": "#69584b",
+    "family": "Grey"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "frassino--chiaro.webp",
+    "swatch": "#806e61",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.1667
+ },
+ "larice": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "naturale",
+    "name": "Naturale",
+    "file": "larice.webp",
+    "swatch": "#aa8f79",
+    "family": "Beige"
+   },
+   {
+    "slug": "sbiancato",
+    "name": "Sbiancato",
+    "file": "larice--sbiancato.webp",
+    "swatch": "#c3b4ac",
+    "family": "Beige"
+   }
+  ],
+  "aspect": 0.1667
+ },
+ "mare": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "mare",
+    "name": "Mare",
+    "file": "mare.webp",
+    "swatch": "#ababa9",
+    "family": "Grey"
+   },
+   {
+    "slug": "caldo",
+    "name": "Caldo",
+    "file": "mare--caldo.webp",
+    "swatch": "#b1aa9f",
+    "family": "Taupe"
+   }
+  ],
+  "aspect": 0.1667
+ },
+ "terrazzo": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "venezia",
+    "name": "Venezia",
+    "file": "terrazzo.webp",
+    "swatch": "#c7c0b8",
+    "family": "Multi"
+   },
+   {
+    "slug": "tenue",
+    "name": "Tenue",
+    "file": "terrazzo--tenue.webp",
+    "swatch": "#c5c1bc",
+    "family": "Multi"
+   }
+  ],
+  "aspect": 1.0
+ },
+ "pepper": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "bianco",
+    "name": "Bianco",
+    "file": "pepper.webp",
+    "swatch": "#cccbcb",
+    "family": "White"
+   },
+   {
+    "slug": "caldo",
+    "name": "Caldo",
+    "file": "pepper--caldo.webp",
+    "swatch": "#d1cbc1",
+    "family": "White"
+   }
+  ],
+  "aspect": 1.0
+ },
+ "cemento": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "grigio",
+    "name": "Grigio",
+    "file": "cemento.webp",
+    "swatch": "#837f7b",
+    "family": "Grey"
+   },
+   {
+    "slug": "chiaro",
+    "name": "Chiaro",
+    "file": "cemento--chiaro.webp",
+    "swatch": "#9a9792",
+    "family": "Grey"
+   },
+   {
+    "slug": "scuro",
+    "name": "Scuro",
+    "file": "cemento--scuro.webp",
+    "swatch": "#65615d",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 1.0
+ },
+ "tz-notte": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "notte",
+    "name": "Notte",
+    "file": "tz-notte.webp",
+    "swatch": "#434346",
+    "family": "Black"
+   },
+   {
+    "slug": "oro",
+    "name": "Oro",
+    "file": "tz-notte--oro.webp",
+    "swatch": "#444344",
+    "family": "Black"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "tz-laguna": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "laguna",
+    "name": "Laguna",
+    "file": "tz-laguna.webp",
+    "swatch": "#b0b2aa",
+    "family": "Multi"
+   },
+   {
+    "slug": "tenue",
+    "name": "Tenue",
+    "file": "tz-laguna--tenue.webp",
+    "swatch": "#b1b2ad",
+    "family": "Multi"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "tz-bosco": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "bosco",
+    "name": "Bosco",
+    "file": "tz-bosco.webp",
+    "swatch": "#546661",
+    "family": "Green"
+   },
+   {
+    "slug": "notte",
+    "name": "Notte",
+    "file": "tz-bosco--notte.webp",
+    "swatch": "#4e6767",
+    "family": "Green"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "tz-grande": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "grande",
+    "name": "Grande",
+    "file": "tz-grande.webp",
+    "swatch": "#b9afa6",
+    "family": "Multi"
+   },
+   {
+    "slug": "tenue",
+    "name": "Tenue",
+    "file": "tz-grande--tenue.webp",
+    "swatch": "#b6b0aa",
+    "family": "Multi"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "tz-oceano": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "oceano",
+    "name": "Oceano",
+    "file": "tz-oceano.webp",
+    "swatch": "#273640",
+    "family": "Blue"
+   },
+   {
+    "slug": "tenue",
+    "name": "Tenue",
+    "file": "tz-oceano--tenue.webp",
+    "swatch": "#2e353a",
+    "family": "Blue"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "corten": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "corten",
+    "name": "Corten",
+    "file": "corten.webp",
+    "swatch": "#65544d",
+    "family": "Copper"
+   },
+   {
+    "slug": "scuro",
+    "name": "Scuro",
+    "file": "corten--scuro.webp",
+    "swatch": "#483932",
+    "family": "Copper"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "ottone": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "ottone",
+    "name": "Ottone",
+    "file": "ottone.webp",
+    "swatch": "#c59850",
+    "family": "Gold"
+   },
+   {
+    "slug": "scuro",
+    "name": "Scuro",
+    "file": "ottone--scuro.webp",
+    "swatch": "#a27932",
+    "family": "Gold"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "rame": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "rame",
+    "name": "Rame",
+    "file": "rame.webp",
+    "swatch": "#aa8265",
+    "family": "Copper"
+   },
+   {
+    "slug": "verderame",
+    "name": "Verderame",
+    "file": "rame--verderame.webp",
+    "swatch": "#8c8b83",
+    "family": "Green"
+   }
+  ],
+  "aspect": 0.5
+ },
+ "acciaio": {
+  "normal": true,
+  "colourways": [
+   {
+    "slug": "acciaio",
+    "name": "Acciaio",
+    "file": "acciaio.webp",
+    "swatch": "#848b92",
+    "family": "Grey"
+   },
+   {
+    "slug": "grafite",
+    "name": "Grafite",
+    "file": "acciaio--grafite.webp",
+    "swatch": "#656d74",
+    "family": "Grey"
+   }
+  ],
+  "aspect": 0.5
+ }
+}

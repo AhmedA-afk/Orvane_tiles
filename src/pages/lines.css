@@ -1,0 +1,367 @@
+/* The lines: an index of eight rows, and a page per line. */
+
+.ln,
+.lp {
+  padding: clamp(120px, 19svh, 200px) var(--m) clamp(96px, 14svh, 160px);
+}
+
+.ln-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 34ch);
+  align-items: end;
+  gap: 28px 48px;
+  margin-bottom: clamp(48px, 8svh, 96px);
+}
+
+.ln-head .lead {
+  margin: 0 0 0.5em;
+  color: var(--ink-2);
+}
+
+.ln-title,
+.lp-title {
+  margin: 0;
+  font-size: clamp(4rem, 0.8rem + 11vw, 12.5rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.84;
+}
+
+.ln-title > span > span,
+.lp-title > span > span {
+  padding-right: 0.06em;
+}
+
+.ln-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hair);
+}
+
+.ln-row {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: 24px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--hair);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.ln-no {
+  color: var(--muted);
+}
+
+.ln-name {
+  font-size: clamp(2.5rem, 1rem + 4vw, 5.25rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+  transition: transform 0.6s var(--ease);
+}
+
+.ln-row:hover .ln-name {
+  transform: translateX(0.14em);
+}
+
+.ln-meta {
+  display: grid;
+  gap: 4px;
+}
+
+.ln-meta b {
+  font-weight: 500;
+}
+
+/* four designs of the line, fanned like samples in a hand */
+.ln-fan {
+  position: relative;
+  height: 92px;
+}
+
+.ln-fan img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 66px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px -14px rgb(0 0 0 / 0.4);
+  transition: transform 0.7s var(--ease);
+}
+
+.ln-fan img:nth-child(1) {
+  transform: translateX(-120%) rotate(-6deg);
+}
+.ln-fan img:nth-child(2) {
+  transform: translateX(-75%) rotate(-2deg);
+}
+.ln-fan img:nth-child(3) {
+  transform: translateX(-30%) rotate(2deg);
+}
+.ln-fan img:nth-child(4) {
+  transform: translateX(15%) rotate(6deg);
+}
+
+.ln-row:hover .ln-fan img:nth-child(1) {
+  transform: translateX(-190%) rotate(-10deg);
+}
+.ln-row:hover .ln-fan img:nth-child(2) {
+  transform: translateX(-100%) rotate(-4deg);
+}
+.ln-row:hover .ln-fan img:nth-child(3) {
+  transform: translateX(-5%) rotate(4deg);
+}
+.ln-row:hover .ln-fan img:nth-child(4) {
+  transform: translateX(90%) rotate(10deg);
+}
+
+/* ---- a line: a compact header, then its rooms ---- */
+.lp {
+  padding-top: clamp(104px, 15svh, 150px);
+}
+
+.lp-head {
+  display: grid;
+  gap: 18px;
+  margin-bottom: clamp(28px, 4svh, 44px);
+}
+
+.lp-head-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 46ch);
+  align-items: end;
+  gap: 20px 56px;
+}
+
+.lp .lp-title {
+  font-size: clamp(3.5rem, 1rem + 7.4vw, 8.5rem);
+}
+
+.lp-head-side {
+  display: grid;
+  gap: 10px;
+  padding-bottom: 0.6em;
+}
+
+.lp-tag {
+  margin: 0;
+  font-size: var(--s-title);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.lp-story {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+.lp-apps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.lp-apps span {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgb(11 11 12 / 0.06);
+  font-size: var(--s-small);
+}
+
+.lp-sec-note {
+  max-width: 40ch;
+  margin: 0;
+}
+
+.lp-sec {
+  padding-top: clamp(88px, 14svh, 160px);
+}
+
+.lp-sec-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px 48px;
+  margin-bottom: clamp(28px, 5svh, 48px);
+}
+
+.lp-sec-head .title {
+  margin: 0;
+}
+
+.lp-scale {
+  width: 100%;
+  height: auto;
+  max-height: 60svh;
+}
+
+.lp-floor {
+  stroke: var(--hair);
+  stroke-width: 6;
+}
+
+.lp-person {
+  fill: #cfcfca;
+}
+
+.lp-fmt {
+  fill: var(--bg-2);
+  stroke: var(--ink);
+  stroke-width: 8;
+}
+
+.lp-fmt.is-demo {
+  stroke-dasharray: 40 24;
+}
+
+.lp-cap {
+  font: 400 110px var(--mono);
+  fill: var(--muted);
+}
+
+.lp-mm {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  margin: clamp(28px, 5svh, 48px) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hair);
+}
+
+.lp-mm li {
+  display: grid;
+  gap: 4px;
+  padding: 18px 20px 18px 0;
+  border-bottom: 1px solid var(--hair);
+}
+
+.lp-mm b {
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.lp-designs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(28px, 4svh, 48px) clamp(12px, 1.4vw, 20px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lp-designs a {
+  display: grid;
+  gap: 6px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.lp-designs img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 22px;
+  margin-bottom: 8px;
+  background: var(--bg-2);
+  transition: transform 1s var(--ease);
+}
+
+.lp-designs a:hover img {
+  transform: scale(1.03);
+}
+
+.lp-d-name {
+  overflow: hidden;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.lp-d-note {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.lp-next {
+  display: grid;
+  gap: 6px;
+  margin-top: clamp(96px, 16svh, 180px);
+  padding-top: 28px;
+  border-top: 1px solid var(--hair);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.lp-next-name {
+  font-size: clamp(3.5rem, 1rem + 8vw, 9rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+  transition: transform 0.6s var(--ease);
+}
+
+.lp-next:hover .lp-next-name {
+  transform: translateX(0.08em);
+}
+
+@media (max-width: 899px) {
+  .ln-head,
+  .lp-head-row {
+    grid-template-columns: 1fr;
+  }
+  .ln-row {
+    grid-template-columns: 2rem minmax(0, 1fr);
+  }
+  .ln-meta {
+    grid-column: 2;
+  }
+  .ln-fan {
+    display: none;
+  }
+  .lp-designs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* a line's lead photograph, wide, and the index's thumbnails */
+.ln-room {
+  display: block;
+  justify-self: end;
+  width: min(260px, 100%);
+}
+
+.ln-room picture {
+  display: block;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.ln-room img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 1s var(--ease);
+}
+
+.ln-row:hover .ln-room img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 899px) {
+  .ln-room {
+    display: none;
+  }
+}

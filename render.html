@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Orvane render</title>
+    <style>
+      html,
+      body,
+      #r {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Dev-only still renderer for scripts/render-stills.mjs. Not part of the production build. -->
+    <div id="r"></div>
+    <script type="module" src="/src/render/main.tsx"></script>
+  </body>
+</html>

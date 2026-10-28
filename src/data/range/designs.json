@@ -1,0 +1,1700 @@
+{
+ "_note": "SAMPLE DATA. The demo range: every design, its line, its source scan (CC0, credited in public/images/CREDITS.md) and its colourways. scripts/build-textures.py reads this file and writes the textures and swatches.json.",
+ "grades": {
+  "warm": {
+   "a": 1.0,
+   "b": 5.5
+  },
+  "cool": {
+   "a": -0.6,
+   "b": -4.5
+  },
+  "neutral": {
+   "chroma": 0.12
+  },
+  "grigio": {
+   "dL": -6,
+   "chroma": 0.3,
+   "contrast": 1.05
+  },
+  "viola": {
+   "chroma": 0.15,
+   "vein": [
+    17,
+    -10
+   ],
+   "dL": -1
+  },
+  "verde": {
+   "chroma": 0.15,
+   "vein": [
+    -20,
+    8
+   ]
+  },
+  "oro": {
+   "vein": [
+    5,
+    26
+   ]
+  },
+  "venaoro": {
+   "highlight": [
+    3,
+    22
+   ]
+  },
+  "notte": {
+   "shadow": [
+    -2,
+    -12
+   ]
+  },
+  "bosco": {
+   "shadow": [
+    -9,
+    3
+   ]
+  },
+  "chiaro": {
+   "dL": 9,
+   "contrast": 0.85
+  },
+  "scuro": {
+   "dL": -12,
+   "contrast": 1.08
+  },
+  "profondo": {
+   "dL": -20,
+   "contrast": 1.15
+  },
+  "tenue": {
+   "chroma": 0.55,
+   "contrast": 0.9
+  },
+  "sbiancato": {
+   "dL": 13,
+   "chroma": 0.55,
+   "b": -2.5
+  },
+  "fume": {
+   "dL": -14,
+   "chroma": 0.7
+  },
+  "miele": {
+   "hue": 68,
+   "chroma": 1.2,
+   "dL": -2
+  }
+ },
+ "designs": [
+  {
+   "id": "statuario",
+   "name": "Statuario Bianco",
+   "line": "maesta",
+   "source": "ambientCG:Marble021",
+   "look": "marble",
+   "faces": 8,
+   "finish": "specchio",
+   "note": "After the white marble of Carrara",
+   "colourways": [
+    {
+     "name": "Bianco",
+     "grade": null,
+     "family": "White"
+    },
+    {
+     "name": "Caldo",
+     "grade": "warm",
+     "family": "Cream"
+    },
+    {
+     "name": "Grigio",
+     "grade": "grigio",
+     "family": "White"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "calacatta",
+   "name": "Calacatta Oro",
+   "line": "maesta",
+   "source": "ambientCG:Marble014",
+   "look": "marble",
+   "faces": 6,
+   "finish": "specchio",
+   "note": "After the gold-veined Calacatta of the Apuan Alps",
+   "colourways": [
+    {
+     "name": "Oro",
+     "grade": null,
+     "family": "White"
+    },
+    {
+     "name": "Bianco",
+     "grade": "neutral",
+     "family": "White"
+    },
+    {
+     "name": "Viola",
+     "grade": "viola",
+     "family": "White"
+    },
+    {
+     "name": "Verde",
+     "grade": "verde",
+     "family": "White"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "nero",
+   "name": "Nero Marquina",
+   "line": "maesta",
+   "source": "ambientCG:Marble016",
+   "look": "marble",
+   "faces": 6,
+   "finish": "specchio",
+   "note": "After the black limestone of Markina, Basque Country",
+   "colourways": [
+    {
+     "name": "Nero",
+     "grade": null,
+     "family": "Black"
+    },
+    {
+     "name": "Notte",
+     "grade": "notte",
+     "family": "Black"
+    },
+    {
+     "name": "Bosco",
+     "grade": "bosco",
+     "family": "Black"
+    }
+   ],
+   "legacy": true,
+   "hd": true
+  },
+  {
+   "id": "lasa",
+   "name": "Bianco Lasa",
+   "line": "maesta",
+   "source": "ambientCG:Marble001",
+   "look": "marble",
+   "faces": 6,
+   "finish": "glossy",
+   "note": "After the white marble of the Lasa valley, South Tyrol",
+   "colourways": [
+    {
+     "name": "Bianco",
+     "grade": null,
+     "family": "White"
+    },
+    {
+     "name": "Caldo",
+     "grade": "warm",
+     "family": "Cream"
+    },
+    {
+     "name": "Oro",
+     "grade": "oro",
+     "family": "White"
+    }
+   ]
+  },
+  {
+   "id": "arabescato",
+   "name": "Arabescato",
+   "line": "maesta",
+   "source": "ambientCG:Marble019",
+   "look": "marble",
+   "faces": 6,
+   "finish": "satin",
+   "note": "A white ground under a fine net of grey veins",
+   "colourways": [
+    {
+     "name": "Bianco",
+     "grade": null,
+     "family": "White"
+    },
+    {
+     "name": "Grigio",
+     "grade": "grigio",
+     "family": "Grey"
+    }
+   ]
+  },
+  {
+   "id": "emperador",
+   "name": "Emperador Scuro",
+   "line": "maesta",
+   "source": "ambientCG:Marble011",
+   "look": "marble",
+   "faces": 6,
+   "finish": "glossy",
+   "note": "After the dark brown Emperador of Murcia",
+   "colourways": [
+    {
+     "name": "Scuro",
+     "grade": null,
+     "family": "Brown"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Brown"
+    },
+    {
+     "name": "Profondo",
+     "grade": "profondo",
+     "family": "Black"
+    }
+   ]
+  },
+  {
+   "id": "portoro",
+   "name": "Portoro",
+   "line": "maesta",
+   "source": "ambientCG:Marble006",
+   "look": "marble",
+   "faces": 6,
+   "finish": "specchio",
+   "note": "After the black-and-gold marble of Portovenere",
+   "colourways": [
+    {
+     "name": "Nero",
+     "grade": null,
+     "family": "Black"
+    },
+    {
+     "name": "Oro",
+     "grade": "venaoro",
+     "family": "Black"
+    }
+   ]
+  },
+  {
+   "id": "taupe",
+   "name": "Silk Taupe",
+   "line": "maesta",
+   "source": "ambientCG:Marble020",
+   "look": "marble",
+   "faces": 6,
+   "finish": "satin",
+   "note": "A warm taupe crossed by hairline veins",
+   "colourways": [
+    {
+     "name": "Taupe",
+     "grade": null,
+     "family": "Taupe"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Taupe"
+    },
+    {
+     "name": "Grigio",
+     "grade": "grigio",
+     "family": "Grey"
+    }
+   ]
+  },
+  {
+   "id": "ambra",
+   "name": "Ambra",
+   "line": "maesta",
+   "source": "ambientCG:Marble022",
+   "look": "marble",
+   "faces": 6,
+   "finish": "glossy",
+   "note": "Amber, under a white crackle of veins",
+   "colourways": [
+    {
+     "name": "Ambra",
+     "grade": null,
+     "family": "Gold"
+    },
+    {
+     "name": "Miele",
+     "grade": "miele",
+     "family": "Gold"
+    },
+    {
+     "name": "Scuro",
+     "grade": "scuro",
+     "family": "Brown"
+    }
+   ]
+  },
+  {
+   "id": "onice",
+   "name": "Onice Verde",
+   "line": "gemelli",
+   "source": "ambientCG:Travertine011",
+   "look": "onyx",
+   "faces": 4,
+   "finish": "specchio",
+   "note": "After green onyx, cut across its layers",
+   "colourways": [
+    {
+     "name": "Verde",
+     "grade": null,
+     "family": "Green"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Green"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "miele",
+   "name": "Onice Miele",
+   "line": "gemelli",
+   "source": "ambientCG:Onyx002",
+   "look": "onyx",
+   "faces": 4,
+   "finish": "specchio",
+   "note": "Honey onyx, banded amber and cream",
+   "colourways": [
+    {
+     "name": "Miele",
+     "grade": null,
+     "family": "Gold"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Gold"
+    }
+   ]
+  },
+  {
+   "id": "azzurro",
+   "name": "Onice Azzurro",
+   "line": "gemelli",
+   "source": "ambientCG:Onyx006",
+   "look": "onyx",
+   "faces": 4,
+   "finish": "specchio",
+   "note": "Blue onyx with bands of rust and cream",
+   "colourways": [
+    {
+     "name": "Azzurro",
+     "grade": null,
+     "family": "Blue"
+    },
+    {
+     "name": "Scuro",
+     "grade": "scuro",
+     "family": "Blue"
+    }
+   ]
+  },
+  {
+   "id": "onice-rosso",
+   "name": "Onice Rosso",
+   "line": "gemelli",
+   "source": "ambientCG:Onyx010",
+   "look": "onyx",
+   "faces": 4,
+   "finish": "specchio",
+   "note": "Red onyx, banded wine and pearl",
+   "colourways": [
+    {
+     "name": "Rosso",
+     "grade": null,
+     "family": "Red"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Pink"
+    }
+   ]
+  },
+  {
+   "id": "pavone",
+   "name": "Onice Pavone",
+   "line": "gemelli",
+   "source": "ambientCG:Onyx011",
+   "look": "onyx",
+   "faces": 4,
+   "finish": "specchio",
+   "note": "Peacock onyx in teal and bronze",
+   "colourways": [
+    {
+     "name": "Pavone",
+     "grade": null,
+     "family": "Blue"
+    },
+    {
+     "name": "Scuro",
+     "grade": "scuro",
+     "family": "Blue"
+    }
+   ]
+  },
+  {
+   "id": "onice-nero",
+   "name": "Onice Nero",
+   "line": "gemelli",
+   "source": "ambientCG:Onyx013",
+   "look": "onyx",
+   "faces": 4,
+   "finish": "specchio",
+   "note": "Black onyx with silver ribbons",
+   "colourways": [
+    {
+     "name": "Nero",
+     "grade": null,
+     "family": "Black"
+    },
+    {
+     "name": "Oro",
+     "grade": "venaoro",
+     "family": "Black"
+    }
+   ]
+  },
+  {
+   "id": "onice-bianco",
+   "name": "Onice Bianco",
+   "line": "gemelli",
+   "source": "ambientCG:Onyx015",
+   "look": "onyx",
+   "faces": 4,
+   "finish": "glossy",
+   "note": "White onyx in soft grey layers",
+   "colourways": [
+    {
+     "name": "Bianco",
+     "grade": null,
+     "family": "White"
+    },
+    {
+     "name": "Caldo",
+     "grade": "warm",
+     "family": "Cream"
+    }
+   ]
+  },
+  {
+   "id": "tramonto",
+   "name": "Onice Tramonto",
+   "line": "gemelli",
+   "source": "ambientCG:Onyx003",
+   "look": "onyx",
+   "faces": 4,
+   "finish": "specchio",
+   "note": "Sunset onyx: rust, sky and cream",
+   "colourways": [
+    {
+     "name": "Tramonto",
+     "grade": null,
+     "family": "Multi"
+    },
+    {
+     "name": "Tenue",
+     "grade": "tenue",
+     "family": "Multi"
+    }
+   ]
+  },
+  {
+   "id": "guatemala",
+   "name": "Verde Guatemala",
+   "line": "gemelli",
+   "source": "ambientCG:Marble009",
+   "look": "marble",
+   "faces": 6,
+   "finish": "specchio",
+   "note": "After the deep green marble of Guatemala",
+   "colourways": [
+    {
+     "name": "Verde",
+     "grade": null,
+     "family": "Green"
+    },
+    {
+     "name": "Notte",
+     "grade": "notte",
+     "family": "Green"
+    }
+   ]
+  },
+  {
+   "id": "rosa",
+   "name": "Rosa Portogallo",
+   "line": "gemelli",
+   "source": "ambientCG:Marble010",
+   "look": "marble",
+   "faces": 6,
+   "finish": "glossy",
+   "note": "After the pink marble of Estremoz, Portugal",
+   "colourways": [
+    {
+     "name": "Rosa",
+     "grade": null,
+     "family": "Pink"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Pink"
+    }
+   ]
+  },
+  {
+   "id": "cielo",
+   "name": "Azzurro Cielo",
+   "line": "gemelli",
+   "source": "ambientCG:Marble003",
+   "look": "marble",
+   "faces": 6,
+   "finish": "glossy",
+   "note": "A sky-blue marble with white clouds",
+   "colourways": [
+    {
+     "name": "Cielo",
+     "grade": null,
+     "family": "Blue"
+    },
+    {
+     "name": "Tenue",
+     "grade": "tenue",
+     "family": "Blue"
+    }
+   ]
+  },
+  {
+   "id": "oceano",
+   "name": "Nero Oceano",
+   "line": "gemelli",
+   "source": "ambientCG:Marble023",
+   "look": "marble",
+   "faces": 6,
+   "finish": "specchio",
+   "note": "Blue-black, struck through with white veins",
+   "colourways": [
+    {
+     "name": "Oceano",
+     "grade": null,
+     "family": "Blue"
+    },
+    {
+     "name": "Notte",
+     "grade": "notte",
+     "family": "Blue"
+    }
+   ]
+  },
+  {
+   "id": "bardiglio",
+   "name": "Bardiglio Nuvolato",
+   "line": "velo",
+   "source": "ambientCG:Marble012",
+   "look": "marble",
+   "faces": 4,
+   "finish": "satin",
+   "note": "After the clouded grey marble of the Apuan Alps",
+   "colourways": [
+    {
+     "name": "Grigio",
+     "grade": null,
+     "family": "Grey"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Grey"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "armani",
+   "name": "Armani Grigio",
+   "line": "velo",
+   "source": "ambientCG:Marble024",
+   "look": "stone",
+   "faces": 6,
+   "finish": "matt",
+   "note": "A soft grey stone with quiet veins",
+   "colourways": [
+    {
+     "name": "Grigio",
+     "grade": null,
+     "family": "Taupe"
+    },
+    {
+     "name": "Caldo",
+     "grade": "warm",
+     "family": "Taupe"
+    },
+    {
+     "name": "Scuro",
+     "grade": "scuro",
+     "family": "Brown"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "grigio-perla",
+   "name": "Grigio Perla",
+   "line": "velo",
+   "source": "ambientCG:Marble025",
+   "look": "stone",
+   "faces": 4,
+   "finish": "satin",
+   "note": "A pale pearl grey, barely veined",
+   "colourways": [
+    {
+     "name": "Perla",
+     "grade": null,
+     "family": "Grey"
+    },
+    {
+     "name": "Caldo",
+     "grade": "warm",
+     "family": "Grey"
+    }
+   ]
+  },
+  {
+   "id": "delicato",
+   "name": "Crema Delicato",
+   "line": "velo",
+   "source": "ambientCG:Marble004",
+   "look": "marble",
+   "faces": 4,
+   "finish": "satin",
+   "note": "A cream ground with faint grey veins",
+   "colourways": [
+    {
+     "name": "Crema",
+     "grade": null,
+     "family": "Cream"
+    },
+    {
+     "name": "Bianco",
+     "grade": "cool",
+     "family": "White"
+    }
+   ]
+  },
+  {
+   "id": "botticino",
+   "name": "Botticino",
+   "line": "velo",
+   "source": "ambientCG:Marble015",
+   "look": "stone",
+   "faces": 4,
+   "finish": "matt",
+   "note": "After the even cream limestone of Brescia",
+   "colourways": [
+    {
+     "name": "Crema",
+     "grade": null,
+     "family": "Cream"
+    },
+    {
+     "name": "Sabbia",
+     "grade": "warm",
+     "family": "Cream"
+    }
+   ]
+  },
+  {
+   "id": "nube",
+   "name": "Cemento Nube",
+   "line": "velo",
+   "source": "ambientCG:Concrete016",
+   "look": "concrete",
+   "faces": 4,
+   "finish": "matt",
+   "note": "A pale, clouded concrete",
+   "colourways": [
+    {
+     "name": "Nube",
+     "grade": null,
+     "family": "Grey"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Grey"
+    },
+    {
+     "name": "Scuro",
+     "grade": "scuro",
+     "family": "Grey"
+    }
+   ]
+  },
+  {
+   "id": "carrara",
+   "name": "Carrara Venato",
+   "line": "cucina",
+   "source": "ambientCG:Marble005",
+   "look": "marble",
+   "faces": 6,
+   "finish": "glossy",
+   "note": "After the veined white marble of Carrara",
+   "colourways": [
+    {
+     "name": "Bianco",
+     "grade": null,
+     "family": "White"
+    },
+    {
+     "name": "Grigio",
+     "grade": "grigio",
+     "family": "White"
+    }
+   ]
+  },
+  {
+   "id": "pietra",
+   "name": "Pietra Grey",
+   "line": "cucina",
+   "source": "ambientCG:Marble017",
+   "look": "stone",
+   "faces": 4,
+   "finish": "pelle",
+   "note": "A dark grey limestone look",
+   "colourways": [
+    {
+     "name": "Grigio",
+     "grade": null,
+     "family": "Grey"
+    },
+    {
+     "name": "Profondo",
+     "grade": "profondo",
+     "family": "Black"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "sale-pepe",
+   "name": "Granito Sale e Pepe",
+   "line": "cucina",
+   "source": "ambientCG:Granite002A",
+   "look": "granite",
+   "faces": 2,
+   "finish": "pelle",
+   "note": "A salt-and-pepper granite",
+   "colourways": [
+    {
+     "name": "Grigio",
+     "grade": null,
+     "family": "Grey"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Grey"
+    }
+   ]
+  },
+  {
+   "id": "rubino",
+   "name": "Granito Rubino",
+   "line": "cucina",
+   "source": "ambientCG:Granite006A",
+   "look": "granite",
+   "faces": 2,
+   "finish": "glossy",
+   "note": "A deep red granite",
+   "colourways": [
+    {
+     "name": "Rubino",
+     "grade": null,
+     "family": "Red"
+    },
+    {
+     "name": "Scuro",
+     "grade": "scuro",
+     "family": "Red"
+    }
+   ]
+  },
+  {
+   "id": "azul",
+   "name": "Granito Azul",
+   "line": "cucina",
+   "source": "ambientCG:Granite005A",
+   "look": "granite",
+   "faces": 2,
+   "finish": "satin",
+   "note": "A blue-grey granite with a fine sparkle",
+   "colourways": [
+    {
+     "name": "Azul",
+     "grade": null,
+     "family": "Blue"
+    },
+    {
+     "name": "Grigio",
+     "grade": "neutral",
+     "family": "Grey"
+    }
+   ]
+  },
+  {
+   "id": "bianco-puro",
+   "name": "Bianco Puro",
+   "line": "cucina",
+   "source": "ambientCG:Metal050A",
+   "look": "solid",
+   "faces": 1,
+   "finish": "satin",
+   "note": "A pure white, without a vein",
+   "colourways": [
+    {
+     "name": "Bianco",
+     "grade": null,
+     "family": "White"
+    },
+    {
+     "name": "Caldo",
+     "grade": "warm",
+     "family": "White"
+    }
+   ]
+  },
+  {
+   "id": "nero-assoluto",
+   "name": "Nero Assoluto",
+   "line": "cucina",
+   "source": "ambientCG:Metal029",
+   "look": "solid",
+   "faces": 1,
+   "finish": "pelle",
+   "note": "A deep, even black",
+   "colourways": [
+    {
+     "name": "Nero",
+     "grade": null,
+     "family": "Black"
+    },
+    {
+     "name": "Grafite",
+     "grade": "chiaro",
+     "family": "Black"
+    }
+   ]
+  },
+  {
+   "id": "crema",
+   "name": "Crema Marfil",
+   "line": "terme",
+   "source": "ambientCG:Marble018",
+   "look": "marble",
+   "faces": 4,
+   "finish": "satin",
+   "note": "After the cream marble of Alicante",
+   "colourways": [
+    {
+     "name": "Crema",
+     "grade": null,
+     "family": "Cream"
+    },
+    {
+     "name": "Bianco",
+     "grade": "cool",
+     "family": "White"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "ivory",
+   "name": "Ivory Nano",
+   "line": "terme",
+   "source": "ambientCG:Terrazzo019S",
+   "look": "stone",
+   "faces": 1,
+   "finish": "glossy",
+   "note": "A plain ivory, nano-polished",
+   "colourways": [
+    {
+     "name": "Ivory",
+     "grade": null,
+     "family": "Cream"
+    },
+    {
+     "name": "Sabbia",
+     "grade": "warm",
+     "family": "Cream"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "trav-bianco",
+   "name": "Travertino Bianco",
+   "line": "terme",
+   "source": "ambientCG:Travertine009",
+   "look": "travertine",
+   "faces": 6,
+   "finish": "presa",
+   "note": "After the ivory travertine of Tivoli",
+   "colourways": [
+    {
+     "name": "Bianco",
+     "grade": null,
+     "family": "Cream"
+    },
+    {
+     "name": "Caldo",
+     "grade": "warm",
+     "family": "Cream"
+    }
+   ]
+  },
+  {
+   "id": "argento",
+   "name": "Travertino Argento",
+   "line": "terme",
+   "source": "ambientCG:Travertine002",
+   "look": "travertine",
+   "faces": 6,
+   "finish": "presa",
+   "note": "A silver travertine, banded grey and blue",
+   "colourways": [
+    {
+     "name": "Argento",
+     "grade": null,
+     "family": "Grey"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Grey"
+    }
+   ]
+  },
+  {
+   "id": "celeste",
+   "name": "Travertino Celeste",
+   "line": "terme",
+   "source": "ambientCG:Travertine013",
+   "look": "travertine",
+   "faces": 6,
+   "finish": "satin",
+   "note": "A pale blue travertine",
+   "colourways": [
+    {
+     "name": "Celeste",
+     "grade": null,
+     "family": "Blue"
+    },
+    {
+     "name": "Tenue",
+     "grade": "tenue",
+     "family": "Blue"
+    }
+   ]
+  },
+  {
+   "id": "onice-perla",
+   "name": "Onice Perla",
+   "line": "terme",
+   "source": "ambientCG:Onyx004",
+   "look": "onyx",
+   "faces": 4,
+   "finish": "glossy",
+   "note": "A white onyx with green-gold threads",
+   "colourways": [
+    {
+     "name": "Perla",
+     "grade": null,
+     "family": "White"
+    },
+    {
+     "name": "Bianco",
+     "grade": "neutral",
+     "family": "White"
+    }
+   ]
+  },
+  {
+   "id": "travertino",
+   "name": "Travertino Classico",
+   "line": "aperto",
+   "source": "ambientCG:Travertine004",
+   "look": "travertine",
+   "faces": 8,
+   "finish": "carving",
+   "note": "After the travertine of Tivoli, near Rome",
+   "colourways": [
+    {
+     "name": "Classico",
+     "grade": null,
+     "family": "Beige"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Beige"
+    },
+    {
+     "name": "Scuro",
+     "grade": "scuro",
+     "family": "Taupe"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "noce",
+   "name": "Travertino Noce",
+   "line": "aperto",
+   "source": "ambientCG:Travertine005",
+   "look": "travertine",
+   "faces": 6,
+   "finish": "carving",
+   "note": "A walnut-dark travertine",
+   "colourways": [
+    {
+     "name": "Noce",
+     "grade": null,
+     "family": "Brown"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Brown"
+    }
+   ]
+  },
+  {
+   "id": "trav-oro",
+   "name": "Travertino Oro",
+   "line": "aperto",
+   "source": "ambientCG:Travertine012",
+   "look": "travertine",
+   "faces": 6,
+   "finish": "matt",
+   "note": "A golden travertine",
+   "colourways": [
+    {
+     "name": "Oro",
+     "grade": null,
+     "family": "Gold"
+    },
+    {
+     "name": "Tenue",
+     "grade": "tenue",
+     "family": "Beige"
+    }
+   ]
+  },
+  {
+   "id": "lavato",
+   "name": "Cemento Lavato",
+   "line": "aperto",
+   "source": "ambientCG:Concrete011",
+   "look": "concrete",
+   "faces": 4,
+   "finish": "grip",
+   "note": "Exposed aggregate, washed back to the stones",
+   "colourways": [
+    {
+     "name": "Grigio",
+     "grade": null,
+     "family": "Grey"
+    },
+    {
+     "name": "Caldo",
+     "grade": "warm",
+     "family": "Grey"
+    }
+   ]
+  },
+  {
+   "id": "ciottolo",
+   "name": "Ciottolo",
+   "line": "aperto",
+   "source": "ambientCG:Concrete018",
+   "look": "stone",
+   "faces": 4,
+   "finish": "grip",
+   "note": "River pebbles set in a pale binder",
+   "colourways": [
+    {
+     "name": "Ciottolo",
+     "grade": null,
+     "family": "Beige"
+    },
+    {
+     "name": "Grigio",
+     "grade": "neutral",
+     "family": "Grey"
+    }
+   ]
+  },
+  {
+   "id": "sabbia",
+   "name": "Pietra Sabbia",
+   "line": "aperto",
+   "source": "ambientCG:Concrete040",
+   "look": "stone",
+   "faces": 4,
+   "finish": "grip",
+   "note": "A sandstone look, warm and even",
+   "colourways": [
+    {
+     "name": "Sabbia",
+     "grade": null,
+     "family": "Beige"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Beige"
+    }
+   ]
+  },
+  {
+   "id": "basalto",
+   "name": "Basalto",
+   "line": "aperto",
+   "source": "ambientCG:Concrete032",
+   "look": "stone",
+   "faces": 4,
+   "finish": "grip",
+   "note": "A dark volcanic stone",
+   "colourways": [
+    {
+     "name": "Basalto",
+     "grade": null,
+     "family": "Black"
+    },
+    {
+     "name": "Grafite",
+     "grade": "chiaro",
+     "family": "Grey"
+    }
+   ]
+  },
+  {
+   "id": "ardesia",
+   "name": "Granito Ardesia",
+   "line": "aperto",
+   "source": "ambientCG:Granite003A",
+   "look": "granite",
+   "faces": 2,
+   "finish": "carving",
+   "note": "A flamed granite in slate and rust",
+   "colourways": [
+    {
+     "name": "Ardesia",
+     "grade": null,
+     "family": "Grey"
+    },
+    {
+     "name": "Grigio",
+     "grade": "neutral",
+     "family": "Grey"
+    }
+   ]
+  },
+  {
+   "id": "rovere",
+   "name": "Rovere Natural",
+   "line": "legno",
+   "source": "ambientCG:Wood058",
+   "look": "wood",
+   "faces": 10,
+   "finish": "matt",
+   "note": "Oak, in porcelain planks",
+   "colourways": [
+    {
+     "name": "Naturale",
+     "grade": null,
+     "family": "Beige"
+    },
+    {
+     "name": "Sbiancato",
+     "grade": "sbiancato",
+     "family": "Beige"
+    },
+    {
+     "name": "Fumé",
+     "grade": "fume",
+     "family": "Brown"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "teak",
+   "name": "Teak Antico",
+   "line": "legno",
+   "source": "ambientCG:Wood066",
+   "look": "wood",
+   "faces": 10,
+   "finish": "carving",
+   "note": "Aged teak, in porcelain planks",
+   "colourways": [
+    {
+     "name": "Antico",
+     "grade": null,
+     "family": "Brown"
+    },
+    {
+     "name": "Miele",
+     "grade": "miele",
+     "family": "Brown"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "rovere-bianco",
+   "name": "Rovere Bianco",
+   "line": "legno",
+   "source": "ambientCG:Wood001",
+   "look": "wood",
+   "faces": 12,
+   "finish": "matt",
+   "note": "A pale, bleached oak",
+   "colourways": [
+    {
+     "name": "Bianco",
+     "grade": null,
+     "family": "Beige"
+    },
+    {
+     "name": "Grigio",
+     "grade": "neutral",
+     "family": "Grey"
+    }
+   ]
+  },
+  {
+   "id": "fume",
+   "name": "Rovere Fumé",
+   "line": "legno",
+   "source": "ambientCG:Wood006",
+   "look": "wood",
+   "faces": 12,
+   "finish": "matt",
+   "note": "A smoked oak, grey-brown",
+   "colourways": [
+    {
+     "name": "Fumé",
+     "grade": null,
+     "family": "Brown"
+    },
+    {
+     "name": "Profondo",
+     "grade": "profondo",
+     "family": "Black"
+    }
+   ]
+  },
+  {
+   "id": "canaletto",
+   "name": "Noce Canaletto",
+   "line": "legno",
+   "source": "ambientCG:Wood026",
+   "look": "wood",
+   "faces": 12,
+   "finish": "satin",
+   "note": "After Canaletto walnut",
+   "colourways": [
+    {
+     "name": "Noce",
+     "grade": null,
+     "family": "Brown"
+    },
+    {
+     "name": "Miele",
+     "grade": "miele",
+     "family": "Brown"
+    },
+    {
+     "name": "Scuro",
+     "grade": "scuro",
+     "family": "Brown"
+    }
+   ],
+   "rotate": true
+  },
+  {
+   "id": "wenge",
+   "name": "Wengé",
+   "line": "legno",
+   "source": "ambientCG:Wood028",
+   "look": "wood",
+   "faces": 12,
+   "finish": "matt",
+   "note": "An almost-black African hardwood",
+   "colourways": [
+    {
+     "name": "Wengé",
+     "grade": null,
+     "family": "Black"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Brown"
+    }
+   ],
+   "rotate": true
+  },
+  {
+   "id": "frassino",
+   "name": "Frassino Grigio",
+   "line": "legno",
+   "source": "ambientCG:Wood016",
+   "look": "wood",
+   "faces": 12,
+   "finish": "carving",
+   "note": "A grey-washed ash",
+   "colourways": [
+    {
+     "name": "Grigio",
+     "grade": null,
+     "family": "Grey"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Grey"
+    }
+   ],
+   "rotate": true
+  },
+  {
+   "id": "larice",
+   "name": "Larice",
+   "line": "legno",
+   "source": "ambientCG:Wood046",
+   "look": "wood",
+   "faces": 12,
+   "finish": "matt",
+   "note": "Larch, with a clear open grain",
+   "colourways": [
+    {
+     "name": "Naturale",
+     "grade": null,
+     "family": "Beige"
+    },
+    {
+     "name": "Sbiancato",
+     "grade": "sbiancato",
+     "family": "Beige"
+    }
+   ]
+  },
+  {
+   "id": "mare",
+   "name": "Legno di Mare",
+   "line": "legno",
+   "source": "ambientCG:Wood033",
+   "look": "wood",
+   "faces": 12,
+   "finish": "carving",
+   "note": "Driftwood, weathered to silver",
+   "colourways": [
+    {
+     "name": "Mare",
+     "grade": null,
+     "family": "Grey"
+    },
+    {
+     "name": "Caldo",
+     "grade": "warm",
+     "family": "Taupe"
+    }
+   ],
+   "rotate": true
+  },
+  {
+   "id": "terrazzo",
+   "name": "Terrazzo Venezia",
+   "line": "tattile",
+   "source": "ambientCG:Terrazzo009",
+   "look": "terrazzo",
+   "faces": 4,
+   "finish": "matt",
+   "note": "After Venetian terrazzo",
+   "colourways": [
+    {
+     "name": "Venezia",
+     "grade": null,
+     "family": "Multi"
+    },
+    {
+     "name": "Tenue",
+     "grade": "tenue",
+     "family": "Multi"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "pepper",
+   "name": "Salt & Pepper",
+   "line": "tattile",
+   "source": "ambientCG:Terrazzo017",
+   "look": "terrazzo",
+   "faces": 1,
+   "finish": "matt",
+   "note": "A speckled granite look, pressed in two layers",
+   "colourways": [
+    {
+     "name": "Bianco",
+     "grade": null,
+     "family": "White"
+    },
+    {
+     "name": "Caldo",
+     "grade": "warm",
+     "family": "White"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "cemento",
+   "name": "Cemento Grigio",
+   "line": "tattile",
+   "source": "ambientCG:Concrete042A",
+   "look": "concrete",
+   "faces": 4,
+   "finish": "matt",
+   "note": "The look of poured concrete",
+   "colourways": [
+    {
+     "name": "Grigio",
+     "grade": null,
+     "family": "Grey"
+    },
+    {
+     "name": "Chiaro",
+     "grade": "chiaro",
+     "family": "Grey"
+    },
+    {
+     "name": "Scuro",
+     "grade": "scuro",
+     "family": "Grey"
+    }
+   ],
+   "legacy": true
+  },
+  {
+   "id": "tz-notte",
+   "name": "Terrazzo Notte",
+   "line": "tattile",
+   "source": "ambientCG:Terrazzo003",
+   "look": "terrazzo",
+   "faces": 4,
+   "finish": "satin",
+   "note": "Grey stone flecks on black",
+   "colourways": [
+    {
+     "name": "Notte",
+     "grade": null,
+     "family": "Black"
+    },
+    {
+     "name": "Oro",
+     "grade": "venaoro",
+     "family": "Black"
+    }
+   ]
+  },
+  {
+   "id": "tz-laguna",
+   "name": "Terrazzo Laguna",
+   "line": "tattile",
+   "source": "ambientCG:Terrazzo010",
+   "look": "terrazzo",
+   "faces": 4,
+   "finish": "matt",
+   "note": "Bright chips on a lagoon-blue ground",
+   "colourways": [
+    {
+     "name": "Laguna",
+     "grade": null,
+     "family": "Multi"
+    },
+    {
+     "name": "Tenue",
+     "grade": "tenue",
+     "family": "Multi"
+    }
+   ]
+  },
+  {
+   "id": "tz-bosco",
+   "name": "Terrazzo Bosco",
+   "line": "tattile",
+   "source": "ambientCG:Terrazzo016",
+   "look": "terrazzo",
+   "faces": 4,
+   "finish": "matt",
+   "note": "Pink and gold chips on forest green",
+   "colourways": [
+    {
+     "name": "Bosco",
+     "grade": null,
+     "family": "Green"
+    },
+    {
+     "name": "Notte",
+     "grade": "notte",
+     "family": "Green"
+    }
+   ]
+  },
+  {
+   "id": "tz-grande",
+   "name": "Terrazzo Grande",
+   "line": "tattile",
+   "source": "ambientCG:Terrazzo018",
+   "look": "terrazzo",
+   "faces": 4,
+   "finish": "satin",
+   "note": "Large chips in terracotta, ochre and black",
+   "colourways": [
+    {
+     "name": "Grande",
+     "grade": null,
+     "family": "Multi"
+    },
+    {
+     "name": "Tenue",
+     "grade": "tenue",
+     "family": "Multi"
+    }
+   ]
+  },
+  {
+   "id": "tz-oceano",
+   "name": "Terrazzo Oceano",
+   "line": "tattile",
+   "source": "ambientCG:Terrazzo015",
+   "look": "terrazzo",
+   "faces": 4,
+   "finish": "matt",
+   "note": "Green and white chips on midnight blue",
+   "colourways": [
+    {
+     "name": "Oceano",
+     "grade": null,
+     "family": "Blue"
+    },
+    {
+     "name": "Tenue",
+     "grade": "tenue",
+     "family": "Blue"
+    }
+   ]
+  },
+  {
+   "id": "corten",
+   "name": "Corten",
+   "line": "tattile",
+   "source": "ambientCG:Metal022",
+   "look": "metal",
+   "faces": 4,
+   "finish": "pelle",
+   "note": "Weathering steel, rusted to a deep orange",
+   "colourways": [
+    {
+     "name": "Corten",
+     "grade": null,
+     "family": "Copper"
+    },
+    {
+     "name": "Scuro",
+     "grade": "scuro",
+     "family": "Copper"
+    }
+   ]
+  },
+  {
+   "id": "ottone",
+   "name": "Ottone Antico",
+   "line": "tattile",
+   "source": "ambientCG:Metal007",
+   "look": "metal",
+   "faces": 4,
+   "finish": "satin",
+   "note": "Aged brass under a soft patina",
+   "colourways": [
+    {
+     "name": "Ottone",
+     "grade": null,
+     "family": "Gold"
+    },
+    {
+     "name": "Scuro",
+     "grade": "scuro",
+     "family": "Gold"
+    }
+   ]
+  },
+  {
+   "id": "rame",
+   "name": "Rame",
+   "line": "tattile",
+   "source": "ambientCG:Metal008",
+   "look": "metal",
+   "faces": 4,
+   "finish": "satin",
+   "note": "Copper, oxidised to a warm brown",
+   "colourways": [
+    {
+     "name": "Rame",
+     "grade": null,
+     "family": "Copper"
+    },
+    {
+     "name": "Verderame",
+     "grade": "verde",
+     "family": "Green"
+    }
+   ]
+  },
+  {
+   "id": "acciaio",
+   "name": "Acciaio",
+   "line": "tattile",
+   "source": "ambientCG:Metal010",
+   "look": "metal",
+   "faces": 2,
+   "finish": "pelle",
+   "note": "Brushed steel",
+   "colourways": [
+    {
+     "name": "Acciaio",
+     "grade": null,
+     "family": "Grey"
+    },
+    {
+     "name": "Grafite",
+     "grade": "scuro",
+     "family": "Grey"
+    }
+   ]
+  }
+ ]
+}

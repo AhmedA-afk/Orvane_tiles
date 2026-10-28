@@ -10,6 +10,8 @@ export interface Design {
   base: string
   /** has a normal map, for the carving finish */
   normal?: boolean
+  /** has a full-resolution face (`-hd`), for close-ups that fill the screen */
+  hd?: boolean
 }
 
 const d = (id: string, name: string, aspect: number, base: string, normal = false): Design => ({
@@ -37,8 +39,11 @@ export const DESIGNS: Record<string, Design> = Object.fromEntries(
     d('terrazzo', 'Terrazzo Venezia', 1, 'rgb(200 193 185)'),
     d('pepper', 'Salt & Pepper', 1, 'rgb(205 205 204)'),
     d('ivory', 'Ivory Nano', 1, 'rgb(175 164 139)'),
-  ].map((x) => [x.id, x]),
+  ]
+    .map((x) => (x.id === 'nero' ? { ...x, hd: true } : x))
+    .map((x) => [x.id, x]),
 )
 
-export const tileSrc = (id: string, size: 'lg' | 'sm' = 'lg') => `/tiles/${id}${size === 'sm' ? '-sm' : ''}.webp`
+export const tileSrc = (id: string, size: 'lg' | 'sm' | 'hd' = 'lg') =>
+  `/tiles/${id}${size === 'sm' ? '-sm' : size === 'hd' ? '-hd' : ''}.webp`
 export const normalSrc = (id: string) => `/tiles/${id}-n.webp`

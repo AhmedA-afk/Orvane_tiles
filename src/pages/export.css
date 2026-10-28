@@ -1,0 +1,383 @@
+/* Export: the container loading beside its figures, the sea as one bar per
+   port, and the papers. */
+
+.exp {
+  padding-bottom: clamp(96px, 14svh, 160px);
+}
+
+.exp-load {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(20px, 2.4vw, 40px);
+  min-height: 100svh;
+  padding: 88px var(--m) var(--m);
+}
+
+.exp-stage {
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  border-radius: 32px;
+  background: var(--bg-2);
+}
+
+.exp-stage canvas {
+  position: absolute !important;
+  inset: 0;
+  cursor: grab;
+}
+
+.exp-stage canvas:active {
+  cursor: grabbing;
+}
+
+.exp-hint {
+  position: absolute;
+  left: 22px;
+  bottom: 18px;
+  margin: 0;
+  color: var(--muted);
+}
+
+.exp-side {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: clamp(12px, 3svh, 40px) 0 0;
+}
+
+.exp-title {
+  margin: 0;
+  font-size: clamp(2.75rem, 1rem + 3.6vw, 5.25rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+}
+
+.exp-title > span > span {
+  padding-right: 0.06em;
+}
+
+.exp-lede {
+  max-width: 42ch;
+  margin: 0;
+  color: var(--ink-2);
+}
+
+.exp-controls {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+}
+
+.exp-figures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 6px 0 0;
+  border-top: 1px solid var(--hair);
+}
+
+.exp-figures div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 18px 0 16px;
+  border-bottom: 1px solid var(--hair);
+}
+
+.exp-figures div:nth-child(even) {
+  padding-left: 20px;
+  border-left: 1px solid var(--hair);
+}
+
+.exp-figures dt {
+  font-size: var(--s-small);
+  color: var(--muted);
+}
+
+.exp-figures dd {
+  margin: 0;
+  font-size: clamp(2.25rem, 1rem + 2.4vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* how full the box is, by weight and by space */
+.exp-share {
+  display: grid;
+  gap: 10px;
+}
+
+.exp-share > span {
+  display: grid;
+  grid-template-columns: 5.5rem 3.5rem 1fr;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--s-small);
+  color: var(--muted);
+}
+
+.exp-share b {
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.exp-share i {
+  position: relative;
+  display: block;
+  height: 6px;
+  border-radius: 999px;
+  background: rgb(11 11 12 / 0.07);
+  overflow: hidden;
+}
+
+.exp-share em {
+  position: absolute;
+  inset: 0;
+  border-radius: 0 4px 4px 0;
+  background: var(--ink);
+  transform-origin: 0 50%;
+  transition: transform 0.9s var(--ease);
+}
+
+.exp-note {
+  margin: 0;
+  max-width: 52ch;
+}
+
+/* ---- the sea ---- */
+.exp-sea {
+  padding: clamp(120px, 20svh, 220px) var(--m) 0;
+}
+
+.exp-sea-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 34ch);
+  align-items: end;
+  gap: 24px 48px;
+  margin-bottom: clamp(32px, 6svh, 64px);
+}
+
+.exp-sea-head .head {
+  margin: 0;
+}
+
+.exp-sea-head p {
+  margin: 0 0 0.4em;
+}
+
+.exp-film {
+  position: relative;
+  margin: 0 0 clamp(48px, 9svh, 96px);
+  overflow: hidden;
+  border-radius: 32px;
+  background: var(--dark);
+}
+
+.exp-film video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+}
+
+.exp-film-tag {
+  position: absolute !important;
+  left: 18px;
+  bottom: 18px;
+  --lg-tint: rgb(20 20 22 / 0.35);
+  --lg-edge: rgb(255 255 255 / 0.3);
+  --lg-ink: var(--dark-ink);
+  --lg-blur: 14px;
+  padding: 10px 16px;
+}
+
+/* one thin bar per port, its end rounded, its length the days at sea */
+.exp-bars {
+  display: grid;
+  margin: 0 0 clamp(48px, 9svh, 96px);
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hair);
+}
+
+.exp-bars li {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1.1fr) 7rem minmax(0, 2.4fr) 7rem;
+  align-items: center;
+  gap: 20px;
+  min-height: 64px;
+  border-bottom: 1px solid var(--hair);
+  transition: background-color 0.25s;
+}
+
+.exp-bars li:hover {
+  background: rgb(11 11 12 / 0.025);
+}
+
+.exp-port {
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.exp-port .muted {
+  font-weight: 400;
+}
+
+.exp-region {
+  color: var(--muted);
+}
+
+.exp-bar {
+  display: block;
+  height: 6px;
+}
+
+.exp-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+  background: var(--ink);
+  transform: scaleX(var(--d));
+  transform-origin: 0 50%;
+  transition: transform 1.2s var(--ease) calc(var(--rv-i, 0) * 60ms + 150ms);
+}
+
+.rv-ready .exp-bars li:not(.is-in) .exp-bar i {
+  transform: scaleX(0);
+}
+
+.exp-days {
+  justify-self: end;
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.exp-days small {
+  font-size: var(--s-small);
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.exp-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 1.6vw, 24px);
+}
+
+.exp-photos figure {
+  margin: 0;
+}
+
+.exp-photos img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: 50% 72%;
+  border-radius: 26px;
+}
+
+.exp-photos figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+/* ---- the papers ---- */
+.exp-docs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 112px);
+  align-items: center;
+  padding: clamp(120px, 20svh, 220px) var(--m) 0;
+}
+
+.exp-docs-fig {
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 32px;
+  background: var(--dark);
+}
+
+.exp-docs-fig img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.exp-docs-body .head {
+  max-width: 11ch;
+  margin: 0;
+}
+
+.exp-docs ul {
+  display: grid;
+  margin: clamp(32px, 6svh, 56px) 0 40px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hair);
+}
+
+.exp-docs li {
+  display: grid;
+  grid-template-columns: minmax(0, 13rem) minmax(0, 1fr);
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--hair);
+}
+
+.exp-doc {
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 899px) {
+  .exp-load {
+    grid-template-columns: 1fr;
+    padding-top: 80px;
+  }
+  .exp-stage {
+    min-height: 0;
+    height: 52svh;
+    border-radius: 24px;
+  }
+  .exp-sea-head,
+  .exp-docs {
+    grid-template-columns: 1fr;
+  }
+  .exp-film video {
+    aspect-ratio: 4 / 3;
+  }
+  .exp-bars li {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 'port days' 'bar bar';
+    gap: 8px 16px;
+    padding: 14px 0;
+  }
+  .exp-port {
+    grid-area: port;
+  }
+  .exp-region {
+    display: none;
+  }
+  .exp-bar {
+    grid-area: bar;
+  }
+  .exp-days {
+    grid-area: days;
+  }
+  .exp-photos {
+    grid-template-columns: 1fr;
+  }
+  .exp-docs li {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}

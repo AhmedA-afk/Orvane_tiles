@@ -1,0 +1,985 @@
+/* The home film. A fixed colour backdrop, the fixed 3D stage over it, the
+   chapters over both. Pinned chapters hold with position: sticky. */
+
+.h {
+  position: relative;
+}
+
+.h-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--bg);
+}
+
+.stage {
+  position: fixed !important;
+  inset: 0;
+  z-index: 1;
+  width: 100vw !important;
+  height: 100svh !important;
+  pointer-events: none;
+}
+
+.ch {
+  position: relative;
+}
+
+.ch > * {
+  position: relative;
+  z-index: 2;
+}
+
+.pin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.tone-dark {
+  color: var(--dark-ink);
+}
+
+.tone-dark .muted {
+  color: var(--dark-muted);
+}
+
+/* ---------------------------------------------------------------- hero */
+.hero {
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+/* the name sits behind the stage, so the slab stands in front of it */
+.ch > .hero-word {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding-bottom: 4svh;
+  font-size: 26.5vw;
+  font-weight: 600;
+  letter-spacing: -0.075em;
+  line-height: 0.8;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.hero-letters {
+  display: block;
+  margin-left: -0.06em;
+}
+
+/* each letter rises inside its own mask; the tight tracking lets glyphs overhang
+   their boxes, so the masks reach a little sideways without moving anything */
+.hero-letters .hc-mask {
+  padding: 0 0.12em;
+  margin: 0 -0.12em;
+}
+
+.hero-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-foot {
+  position: absolute !important;
+  left: var(--m);
+  right: var(--m);
+  bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+.hero-line {
+  max-width: 24ch;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 32px;
+  margin: 0;
+  text-align: left;
+}
+
+.hero-meta dt {
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.hero-meta dd {
+  margin: 0;
+}
+
+.hero-scroll {
+  position: absolute !important;
+  left: 50%;
+  bottom: 28px;
+  translate: -50% 0;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+.hero-scroll i {
+  display: block;
+  width: 1px;
+  height: 36px;
+  background: currentColor;
+  transform-origin: 50% 0;
+  animation: scroll-cue 2.2s var(--ease-io) infinite;
+}
+
+@keyframes scroll-cue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: 50% 0;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: 50% 0;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: 50% 100%;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: 50% 100%;
+  }
+}
+
+/* before the entrance plays, the hero's parts wait out of sight */
+.h:not(.is-in):not([data-reduce]) .hero-foot,
+.h:not(.is-in):not([data-reduce]) .hero-scroll,
+.h:not(.is-in):not([data-reduce]) .hero-word {
+  visibility: hidden;
+}
+
+/* ---------------------------------------------------------------- spaces */
+.spaces {
+  height: 420svh;
+}
+
+.spaces-pin {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  align-content: center;
+  gap: clamp(24px, 4svh, 48px);
+  padding-top: clamp(88px, 12svh, 128px);
+}
+
+.spaces-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 34ch);
+  gap: 16px 48px;
+  align-items: end;
+  padding: 0 var(--m);
+}
+
+.spaces-head > * {
+  margin: 0;
+}
+
+.spaces-track {
+  justify-self: start;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(16px, 2vw, 32px);
+  width: max-content;
+  margin: 0;
+  padding: 0 var(--m);
+  list-style: none;
+  will-change: transform;
+}
+
+.spaces-card {
+  display: grid;
+  gap: 8px;
+  width: min(56vw, 92svh);
+  color: inherit;
+  text-decoration: none;
+}
+
+.spaces-pic {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.spaces-pic picture,
+.spaces-pic img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+
+.spaces-card:hover .spaces-pic img {
+  transform: scale(1.03);
+}
+
+.spaces-name {
+  margin-top: 6px;
+  font-size: var(--s-title);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.spaces-say {
+  color: var(--muted);
+}
+
+.spaces-all {
+  align-self: center;
+  padding: 0 4vw;
+}
+
+/* without the film the rooms are a row to swipe */
+.h[data-reduce] .spaces {
+  height: auto;
+}
+
+.h[data-reduce] .spaces-pin {
+  position: static;
+  height: auto;
+  padding-block: 18svh 8svh;
+}
+
+.h[data-reduce] .spaces-track {
+  width: auto;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.h[data-reduce] .spaces-track > li {
+  scroll-snap-align: start;
+}
+
+.thin-link,
+.surface-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-weight: 500;
+}
+
+/* ---------------------------------------------------------------- thin */
+.thin {
+  height: 340svh;
+}
+
+.thin-nine {
+  position: absolute;
+  left: var(--m);
+  top: 50%;
+  translate: 0 -54%;
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  overflow: hidden;
+  margin: 0;
+}
+
+.thin-digit {
+  display: block;
+  font-size: 72svh;
+  line-height: 0.74;
+  letter-spacing: -0.06em;
+  font-weight: 800;
+}
+
+.thin-unit {
+  margin-bottom: 2.2svh;
+}
+
+.thin-copy {
+  position: absolute !important;
+  width: min(34ch, 32vw);
+}
+
+.thin-copy p {
+  margin-top: 18px;
+  color: var(--ink-2);
+}
+
+.thin-a {
+  right: var(--m);
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.thin-b {
+  left: var(--m);
+  bottom: 14svh;
+}
+
+/* the face-on slab's measures; its size matches the film's pose (72% of the screen tall) */
+.thin-dims {
+  --fh: 72svh;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--fh) * 0.5);
+  height: var(--fh);
+  translate: -50% -50%;
+  pointer-events: none;
+}
+
+.dim {
+  position: absolute;
+  display: block;
+}
+
+.dim i {
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+}
+
+.dim i::before,
+.dim i::after {
+  content: '';
+  position: absolute;
+  background: var(--ink);
+}
+
+.dim-v {
+  left: -44px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+}
+
+.dim-v i {
+  transform-origin: 50% 50%;
+}
+
+.dim-v i::before,
+.dim-v i::after {
+  left: -6px;
+  width: 13px;
+  height: 1px;
+}
+
+.dim-v i::before {
+  top: 0;
+}
+
+.dim-v i::after {
+  bottom: 0;
+}
+
+.dim-v b {
+  position: absolute;
+  left: -26px;
+  top: 50%;
+  translate: -50% -50%;
+  rotate: -90deg;
+  font-weight: 400;
+}
+
+.dim-h {
+  left: 0;
+  right: 0;
+  bottom: -40px;
+  height: 1px;
+}
+
+.dim-h i::before,
+.dim-h i::after {
+  top: -6px;
+  width: 1px;
+  height: 13px;
+}
+
+.dim-h i::before {
+  left: 0;
+}
+
+.dim-h i::after {
+  right: 0;
+}
+
+.dim-h b {
+  position: absolute;
+  left: 50%;
+  top: 14px;
+  translate: -50% 0;
+  font-weight: 400;
+}
+
+/* ---------------------------------------------------------------- surface */
+.surface {
+  height: 340svh;
+}
+
+.surface-a {
+  position: absolute !important;
+  inset: 13svh var(--m) 9svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+  pointer-events: none;
+}
+
+/* the line above the slab, the reading beneath it, so the light has the middle */
+.surface-a .head {
+  max-width: 11ch;
+}
+
+.surface-a p {
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: end;
+  max-width: 40ch;
+  color: #cfcfcb;
+}
+
+.surface-b {
+  position: absolute !important;
+  left: 50%;
+  bottom: 40px;
+  translate: -50% 0;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  width: min(440px, calc(100vw - 40px));
+  padding: 26px 26px 20px;
+  text-align: center;
+}
+
+.surface-hint {
+  color: rgb(241 241 238 / 0.7);
+}
+
+.finish-row {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.08);
+}
+
+.finish-row button {
+  position: relative;
+  min-height: 40px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: rgb(241 241 238 / 0.75);
+  font: 500 0.9375rem / 1 var(--sans);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.finish-row button[aria-checked='true'] {
+  color: var(--ink);
+}
+
+.finish-row button span:not(.finish-thumb) {
+  position: relative;
+}
+
+.finish-thumb {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--dark-ink);
+}
+
+.surface-note {
+  font-size: var(--s-small);
+  color: rgb(241 241 238 / 0.7);
+}
+
+/* ---------------------------------------------------------------- stones */
+.stones {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 40px;
+  padding: 26svh var(--m) 34svh;
+}
+
+.stones-head {
+  grid-column: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 18svh;
+}
+
+.stones-list {
+  grid-column: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stones-list a {
+  display: block;
+  width: fit-content;
+  font-size: clamp(2.5rem, 5.9vw, 6.5rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+  color: var(--faint);
+  text-decoration: none;
+  transition:
+    color 0.5s var(--ease),
+    transform 0.6s var(--ease);
+}
+
+.stones-list li[data-on] a,
+.stones-list a:hover {
+  color: var(--ink);
+}
+
+.stones-list li[data-on] a {
+  transform: translateX(0.12em);
+}
+
+.stones-card {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: start;
+  position: sticky !important;
+  top: 83svh;
+  justify-self: center;
+  width: min(360px, 100%);
+  text-align: center;
+}
+
+.stones-name {
+  font-size: var(--s-lead);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.stones-note {
+  color: var(--ink-2);
+  margin: 4px 0 8px;
+}
+
+.stones-poster {
+  display: block;
+  width: 220px;
+  margin: 0 auto 16px;
+}
+
+/* ---------------------------------------------------------------- room */
+.room {
+  height: 280svh;
+}
+
+.room-say {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;
+  margin: 0;
+  pointer-events: none;
+}
+
+.room-say span {
+  display: block;
+}
+
+.room-frame {
+  position: absolute;
+  inset: 0;
+  clip-path: circle(0% at 50% 58%);
+  overflow: hidden;
+}
+
+.room-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spot {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.5);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.8),
+    0 6px 18px rgb(0 0 0 / 0.18);
+  cursor: pointer;
+}
+
+.spot::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.spot::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.7);
+  animation: spot-ring 2.4s var(--ease-out) infinite;
+}
+
+@keyframes spot-ring {
+  from {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.spot-card {
+  position: absolute;
+  left: 22px;
+  bottom: 22px;
+  display: grid;
+  gap: 2px;
+  width: max-content;
+  max-width: 260px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgb(255 255 255 / 0.78);
+  -webkit-backdrop-filter: blur(18px) saturate(1.8);
+  backdrop-filter: blur(18px) saturate(1.8);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.9),
+    0 18px 40px -16px rgb(0 0 0 / 0.35);
+  color: var(--ink);
+  text-align: left;
+  font-size: var(--s-small);
+  line-height: 1.35;
+}
+
+.spot-card .mono {
+  color: var(--muted);
+}
+
+.spot-card b {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.room-card {
+  position: absolute !important;
+  left: var(--m);
+  bottom: 32px;
+  max-width: 380px;
+}
+
+.room-card-in {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+  padding: 22px;
+}
+
+.room-card-in p {
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+/* ---------------------------------------------------------------- morbi */
+.morbi {
+  padding: 26svh var(--m) 22svh;
+}
+
+.morbi-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: end;
+}
+
+.morbi-copy {
+  display: grid;
+  gap: 28px;
+  justify-items: start;
+}
+
+.morbi-copy .lead {
+  max-width: 34ch;
+  color: #cfcfcb;
+}
+
+.morbi-fig {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.morbi-fig img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.morbi-fig figcaption {
+  position: absolute;
+  left: 20px;
+  bottom: 18px;
+  color: rgb(241 241 238 / 0.8);
+}
+
+.morbi-nums {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  margin: clamp(80px, 10vw, 140px) 0 24px;
+}
+
+.morbi-nums div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+}
+
+.morbi-nums dd {
+  margin: 0 0 10px;
+  font-size: var(--s-head);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.morbi-nums small {
+  font-size: 0.4em;
+  margin-left: 0.15em;
+  letter-spacing: -0.02em;
+}
+
+.morbi-nums dt {
+  color: var(--dark-muted);
+}
+
+.morbi-sample {
+  color: var(--dark-muted);
+}
+
+.odo {
+  display: inline-flex;
+}
+
+.odo-col {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+}
+
+.odo-strip {
+  display: flex;
+  flex-direction: column;
+  transition: transform 1.8s var(--ease-out);
+}
+
+.odo-strip span {
+  display: block;
+  height: 1em;
+  line-height: 1;
+}
+
+.odo-sep {
+  display: inline-block;
+}
+
+/* ---------------------------------------------------------------- samples */
+.samples {
+  min-height: 140svh;
+  padding: 30svh var(--m) 16svh;
+}
+
+.samples-copy {
+  display: grid;
+  gap: 28px;
+  justify-items: start;
+  max-width: 48vw;
+}
+
+.samples-copy .lead {
+  max-width: 30ch;
+  color: var(--ink-2);
+}
+
+.samples-poster {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 48px;
+  max-width: 600px;
+}
+
+/* ---------------------------------------------------------------- chapter mark */
+.chapter-mark {
+  position: fixed;
+  left: var(--m);
+  bottom: 22px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 1.4em;
+  overflow: hidden;
+  color: var(--ink);
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    color 0.5s var(--ease),
+    opacity 0.5s var(--ease);
+}
+
+html[data-tone='dark'] .chapter-mark {
+  color: var(--dark-ink);
+}
+
+.chapter-mark i {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: currentColor;
+  transform-origin: 0 50%;
+  transition: transform 0.6s var(--ease);
+}
+
+.chapter-mark span:last-child {
+  display: block;
+}
+
+.h.is-scrolled .chapter-mark {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------- phone */
+@media (max-width: 899px) {
+  .spaces {
+    height: 520svh;
+  }
+  .spaces-head {
+    grid-template-columns: 1fr;
+  }
+  .spaces-card {
+    width: 82vw;
+  }
+  .spaces-pic {
+    aspect-ratio: 4 / 5;
+  }
+
+  .ch > .hero-word {
+    font-size: 30vw;
+    place-items: start center;
+    padding-top: 16svh;
+  }
+  .hero-foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .hero-meta {
+    display: none;
+  }
+  .hero-scroll {
+    display: none;
+  }
+  .thin-digit {
+    font-size: 42svh;
+  }
+  .thin-nine {
+    top: 30%;
+  }
+  .thin-copy {
+    width: auto;
+    left: var(--m) !important;
+    right: var(--m) !important;
+  }
+  .thin-a {
+    top: auto;
+    bottom: 8svh;
+    translate: none;
+  }
+  .thin-b {
+    bottom: 6svh;
+  }
+  .thin-dims {
+    --fh: 56svh;
+    top: 40%;
+  }
+  .surface-a {
+    grid-template-columns: 1fr;
+    top: 11svh;
+  }
+  .surface-a p {
+    grid-column: 1;
+  }
+  .stones {
+    grid-template-columns: 1fr;
+    padding-top: 60svh;
+  }
+  .stones-head {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .stones-card {
+    display: none;
+  }
+  .stones-list {
+    max-width: 62%;
+  }
+  .stones-list a {
+    font-size: 2.125rem;
+    line-height: 1.05;
+  }
+  .morbi-grid {
+    grid-template-columns: 1fr;
+  }
+  .morbi-nums {
+    grid-template-columns: 1fr 1fr;
+  }
+  .samples-copy {
+    max-width: none;
+  }
+  .samples {
+    padding-bottom: 60svh;
+  }
+  .chapter-mark {
+    display: none;
+  }
+}

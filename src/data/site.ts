@@ -1,11 +1,18 @@
-// SAMPLE DATA. Placeholders for the demo; swap in the client's real details.
+// SAMPLE DATA. Orvane Ceramica is a fictional company made for this demo;
+// every detail here is a placeholder to swap for a real manufacturer's own.
 
-export const BRAND = 'Morbi Tiles Market'
+export const BRAND = 'Orvane Ceramica'
+export const BRAND_SHORT = 'Orvane'
 
-/** International format, digits only, as wa.me expects. Placeholder number. */
-export const WHATSAPP_NUMBER = '919800000000'
-export const EMAIL = 'export@morbitiles.example'
-export const ADDRESS = ['8-A National Highway, Lalpar', 'Morbi, Gujarat 363642, India']
+/**
+ * International format, digits only, as wa.me expects. A deliberately invalid
+ * placeholder (no Indian mobile starts with 0), so a demo enquiry can never
+ * reach a real person. Put the presenter's own number here for live demos.
+ */
+export const WHATSAPP_NUMBER = '910000000000'
+export const EMAIL = 'studio@orvane.example'
+/** Fictional, and kept vague on purpose so it matches no real company's premises. */
+export const ADDRESS = ['Orvane Works, Plot 00, Ceramic Cluster', 'Morbi, Gujarat, India']
 
 export const FACTS = [
   { value: 32000, unit: 'm²', label: 'pressed, fired and polished every day' },
