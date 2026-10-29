@@ -1,12 +1,13 @@
-import { ContactShadows, PerspectiveCamera, useFBO } from '@react-three/drei'
+import { ContactShadows, PerspectiveCamera, useFBO, useTexture } from '@react-three/drei'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Suspense, useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { productById, sizeById } from '../data/catalog'
 import { designById, formatById, LINES, lineById } from '../data/range'
-import { Slab, preloadDesign } from '../three/Slab'
+import { Slab, preloadDesign, type FaceSrc } from '../three/Slab'
 import { Studio } from '../three/Studio'
-import { D, intro, pointer, useLook, type Pose } from './store'
+import room from './room.json'
+import { D, follow, pointer, ROOM_STONE, ROOM_TILE, snap, useLook, type Pose } from './store'
 
 // The home page's single 3D stage: one porcelain slab that performs the whole
 // page. It reads its pose from the film (`D`) in screen terms, so "two thirds
@@ -25,6 +26,11 @@ const C: Pose = { ...D }
 
 function useEase() {
   useFrame((_, dt) => {
+    if (snap.now) {
+      Object.assign(C, D)
+      snap.now = false
+      return
+    }
     const step = Math.min(dt, 1 / 20)
     for (const k of KEYS) C[k] = THREE.MathUtils.damp(C[k], D[k], 6.5, step)
   })
@@ -39,9 +45,16 @@ function sizeFor(design: string): [number, number] {
   return [w * k, h * k]
 }
 
+/** the room's stone: the tile with its face and shape on the wall, then the same stone as a slab */
+const ROOM: Record<string, { face: FaceSrc; size: [number, number] }> = {
+  [ROOM_TILE]: { face: { map: '/renders/home/tile.jpg' }, size: [(SLAB_H * room.tile.w) / room.tile.h, SLAB_H] },
+  [ROOM_STONE]: { face: { map: '/renders/home/slab.jpg' }, size: [SLAB_H / 2, SLAB_H] },
+}
+
 function Protagonist() {
   const { design, finish } = useLook()
-  const size = useMemo(() => sizeFor(design), [design])
+  const own = ROOM[design]
+  const size = useMemo(() => own?.size ?? sizeFor(design), [own, design])
   const group = useRef<THREE.Group>(null)
   const aspect = useThree((s) => s.size.width / s.size.height)
   const shadow = useRef<THREE.Group>(null)
@@ -51,19 +64,28 @@ function Protagonist() {
     if (!g) return
     const t = state.clock.elapsedTime
     const vw = VH * aspect
-    const p = intro.p
     const f = C.float
     const bob = Math.sin(t * 0.9) * 0.025 * f
-    g.position.set((C.sx * vw) / 2, (C.sy * VH) / 2 + bob - (1 - p) * 0.9, 0)
+    g.position.set((C.sx * vw) / 2, (C.sy * VH) / 2 + bob, 0)
     const s = (C.h * VH) / SLAB_H
-    g.scale.setScalar(s * (0.9 + 0.1 * p))
+    g.scale.setScalar(s)
     const lean = pointer.active ? 1 : 0
     g.rotation.set(
       C.rx - pointer.y * 0.07 * f * lean + Math.sin(t * 0.6) * 0.01 * f,
-      C.ry + pointer.x * 0.2 * f * lean + (1 - p) * 0.9,
+      C.ry + pointer.x * 0.2 * f * lean,
       C.rz + Math.sin(t * 0.5) * 0.012 * f,
     )
     g.visible = C.vis > 0.01
+    // the flat tile in the page sits exactly over the slab, until it hands over
+    const el = follow.el
+    if (el) {
+      const { width: W, height: H } = state.size
+      const hp = (C.h * H * size[1]) / SLAB_H
+      const wp = (hp * size[0]) / size[1]
+      el.style.transform = `translate(${((1 + C.sx) * W - wp) / 2}px, ${((1 - C.sy) * H - hp) / 2}px)`
+      el.style.width = `${wp}px`
+      el.style.height = `${hp}px`
+    }
     if (shadow.current) {
       shadow.current.position.set(g.position.x, g.position.y - (s * SLAB_H) / 2 - 0.18 - bob, 0)
       shadow.current.scale.setScalar(Math.max(0.6, s * 1.3))
@@ -74,7 +96,7 @@ function Protagonist() {
   return (
     <>
       <group ref={group}>
-        <Slab design={design} finish={finish} fade={0.9} size={size} hd={HD} />
+        <Slab design={own ? 'calacatta' : design} face={own?.face} finish={finish} fade={0.9} size={size} hd={HD} />
       </group>
       <group ref={shadow}>
         <ContactShadows frames={Infinity} resolution={512} scale={2.2} blur={2.8} far={1.4} opacity={0.42} color="#20201c" />
@@ -162,14 +184,17 @@ function SampleFan() {
     const k = C.fan
     g.visible = k > 0.01
     const vw = VH * aspect
-    g.position.set(aspect > 1 ? vw * 0.2 : 0, aspect > 1 ? -0.05 : 0.35, 0)
+    // beside the words on a wide screen; on a phone, smaller and closer, in the lower third under them
+    const wide = aspect > 1
+    g.position.set(wide ? vw * 0.2 : 0, (wide ? -0.05 : -0.29 * VH) + C.lift * VH, 0)
     const t = state.clock.elapsedTime
+    const fit = wide ? 1 : 0.8
     items.current.forEach((m, i) => {
       if (!m) return
-      const spread = (i - 1.5) * 0.36 * k
+      const spread = (i - 1.5) * (wide ? 0.36 : 0.25) * k
       m.position.set(spread, Math.sin(t * 0.8 + i) * 0.02 + (1 - k) * -0.4, i * 0.02)
       m.rotation.set(0.05, -0.35 + (i - 1.5) * 0.1 * k, (i - 1.5) * -0.12 * k)
-      m.scale.setScalar(0.85 + 0.15 * k)
+      m.scale.setScalar((0.85 + 0.15 * k) * fit)
     })
   })
   return (
@@ -194,6 +219,7 @@ function Frame() {
 
 export default function Stage({ onReady }: { onReady?: () => void }) {
   useEffect(() => {
+    Object.values(ROOM).forEach((r) => useTexture.preload(r.face.map))
     ;['calacatta', 'nero', ...LINES.map((l) => l.feature)].forEach((d) => preloadDesign(d, HD))
   }, [])
   return (

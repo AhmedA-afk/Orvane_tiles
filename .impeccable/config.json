@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "geist",
+        "createdAt": "2026-10-28T22:14:12.443Z",
+        "reason": "project design system: same brand typeface, lowercase in the font stack of kit.ts brochure print CSS"
+      }
+    ]
+  }
+}

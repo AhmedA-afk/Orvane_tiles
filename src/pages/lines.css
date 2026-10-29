@@ -147,6 +147,11 @@
   padding-bottom: 0.6em;
 }
 
+.lp-head-side .btn {
+  justify-self: start;
+  margin-top: 6px;
+}
+
 .lp-tag {
   margin: 0;
   font-size: var(--s-title);
@@ -294,14 +299,43 @@
   -webkit-box-orient: vertical;
 }
 
+/* the next line: its name large, its own stone standing beside it */
 .lp-next {
   display: grid;
-  gap: 6px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: end;
   margin-top: clamp(96px, 16svh, 180px);
   padding-top: 28px;
   border-top: 1px solid var(--hair);
   color: var(--ink);
   text-decoration: none;
+}
+
+.lp-next-text {
+  display: grid;
+  gap: 6px;
+}
+
+.lp-next-kind {
+  max-width: 36ch;
+  color: var(--muted);
+}
+
+.lp-next-face {
+  width: clamp(88px, 12vw, 180px);
+  aspect-ratio: 1 / 2;
+  border-radius: 4px;
+  background: var(--bg-2) center / cover;
+  box-shadow:
+    inset 0 0 0 1px rgb(0 0 0 / 0.06),
+    0 28px 40px -24px rgb(0 0 0 / 0.5);
+  transform: rotate(3deg);
+  transition: transform 0.8s var(--ease);
+}
+
+.lp-next:hover .lp-next-face {
+  transform: rotate(0deg) translateY(-8px);
 }
 
 .lp-next-name {
@@ -333,6 +367,12 @@
   .lp-designs {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .lp-sec {
+    padding-top: 80px;
+  }
+  .lp-next {
+    margin-top: 88px;
+  }
 }
 
 /* a line's lead photograph, wide, and the index's thumbnails */
@@ -360,8 +400,23 @@
   transform: scale(1.05);
 }
 
+/* on a phone each line leads with its room, across the row under its name */
 @media (max-width: 899px) {
   .ln-room {
-    display: none;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: stretch;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  .ln-room picture {
+    border-radius: 14px;
+  }
+  .ln-room img {
+    aspect-ratio: 16 / 10;
+  }
+  .ln-row {
+    align-items: start;
+    row-gap: 10px;
   }
 }

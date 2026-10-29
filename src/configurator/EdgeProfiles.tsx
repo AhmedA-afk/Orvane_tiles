@@ -41,7 +41,7 @@ function shapes(edge: Edge, t: number): string[] {
 function Section({ edge, t, big = false }: { edge: Edge; t: number; big?: boolean }) {
   const deep = edge.startsWith('apron') ? Number(edge.slice(5)) : t
   // the large drawing closes in on the edge itself
-  const box = big ? `${L - 46} -10 66 ${deep + 22}` : `-6 -14 ${L + 20} 110`
+  const box = big ? `${L - 46} -10 80 ${deep + 22}` : `-6 -14 ${L + 20} 110`
   return (
     <svg viewBox={box} className={big ? 'edge-big' : 'edge-svg'} aria-hidden>
       {shapes(edge, t).map((d, i) => (

@@ -276,7 +276,8 @@ textarea.q-input {
 /* the message, written as you go: a chat card with one growing bubble */
 .q-preview {
   position: sticky;
-  top: 96px;
+  top: calc(var(--nav-space) + 22px);
+  transition: top 0.6s var(--ease);
   display: grid;
   gap: 18px;
 }

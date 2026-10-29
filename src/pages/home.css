@@ -52,56 +52,174 @@
   overflow: hidden;
 }
 
-/* the name sits behind the stage, so the slab stands in front of it */
-.ch > .hero-word {
+/* The room. It sits behind the stage and, once the film is built, holds
+   still (fixed) while the scroll takes its tile away. */
+.ch > .hero-room {
   position: absolute;
   inset: 0;
   z-index: 0;
-  display: grid;
-  place-items: center;
-  margin: 0;
-  padding-bottom: 4svh;
-  font-size: 26.5vw;
-  font-weight: 600;
-  letter-spacing: -0.075em;
-  line-height: 0.8;
-  color: var(--ink);
-  white-space: nowrap;
+  height: 100svh;
+  padding: 84px var(--m) var(--m);
+  pointer-events: none;
 }
 
-.hero-letters {
-  display: block;
-  margin-left: -0.06em;
+.h.is-film .ch > .hero-room {
+  position: fixed;
 }
 
-/* each letter rises inside its own mask; the tight tracking lets glyphs overhang
-   their boxes, so the masks reach a little sideways without moving anything */
-.hero-letters .hc-mask {
-  padding: 0 0.12em;
-  margin: 0 -0.12em;
+.hero-pic {
+  position: relative;
+  height: 100%;
+  clip-path: inset(0 round 28px);
 }
 
-.hero-poster {
+.hero-imgs,
+.hero-imgs img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+}
+
+.hero-imgs img {
   object-fit: cover;
+}
+
+/* the tile's shadow on the wall as it comes away */
+.hero-cast {
+  position: absolute;
+  left: var(--tx);
+  top: var(--ty);
+  width: var(--tw);
+  height: var(--th);
+  background: rgb(46 32 18);
+  filter: blur(14px);
+  opacity: 0;
+}
+
+/* a shade under the words */
+.hero-pic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(14 11 8 / 0.62), rgb(14 11 8 / 0.18) 34%, rgb(14 11 8 / 0) 52%);
+}
+
+/* the tile's flat stand-in, over the stage; the stage keeps it on the slab */
+.ch > .hero-piece {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: var(--tw);
+  height: var(--th);
+  transform: translate(var(--tx), var(--ty));
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* this one: marks at the tile's corners, and its name beside it */
+.ch > .hero-focus {
+  position: fixed;
+  z-index: 2;
+  left: calc(var(--tx) - 9px);
+  top: calc(var(--ty) - 9px);
+  width: calc(var(--tw) + 18px);
+  height: calc(var(--th) + 18px);
+  --c: rgb(11 11 12 / 0.82);
+  --l: 14px;
+  background:
+    linear-gradient(var(--c) 0 0) 0 0 / var(--l) 1.5px,
+    linear-gradient(var(--c) 0 0) 0 0 / 1.5px var(--l),
+    linear-gradient(var(--c) 0 0) 100% 0 / var(--l) 1.5px,
+    linear-gradient(var(--c) 0 0) 100% 0 / 1.5px var(--l),
+    linear-gradient(var(--c) 0 0) 0 100% / var(--l) 1.5px,
+    linear-gradient(var(--c) 0 0) 0 100% / 1.5px var(--l),
+    linear-gradient(var(--c) 0 0) 100% 100% / var(--l) 1.5px,
+    linear-gradient(var(--c) 0 0) 100% 100% / 1.5px var(--l);
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.ch > .hero-tag {
+  position: fixed;
+  z-index: 2;
+  left: calc(var(--tx) + var(--tw) + 20px);
+  top: calc(var(--ty) + var(--th) * 0.38);
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 10px 14px 11px;
+  border-radius: 14px;
+  background: rgb(255 255 255 / 0.66);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow: 0 8px 24px -12px rgb(40 30 20 / 0.35);
+  color: var(--ink);
+  font-size: var(--s-small);
+  line-height: 1.25;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.hero-tag b {
+  font-weight: 500;
+}
+
+.hero-tag span {
+  color: var(--ink-2);
+}
+
+/* without the film, the room is simply a picture */
+.h[data-reduce] .hero-focus,
+.h[data-reduce] .hero-tag {
+  display: none;
 }
 
 .hero-foot {
   position: absolute !important;
-  left: var(--m);
-  right: var(--m);
-  bottom: 28px;
+  left: calc(var(--m) + clamp(20px, 2.6vw, 44px));
+  right: calc(var(--m) + clamp(20px, 2.6vw, 44px));
+  bottom: calc(var(--m) + clamp(20px, 2.6vw, 40px));
+  color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 40px;
 }
 
+.hero-title {
+  margin: 0;
+  font-size: clamp(2.75rem, 1rem + 4.4vw, 6rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 0.94;
+}
+
+/* each line rises inside its own mask */
 .hero-line {
-  max-width: 24ch;
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.hero-line > span {
+  display: block;
+}
+
+.hero-sub {
+  max-width: 36ch;
+  margin: 20px 0 0;
+  font-size: var(--s-lead);
+  line-height: 1.35;
+  color: rgb(255 255 255 / 0.86);
+}
+
+.hero .btn-line {
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.55);
+  --btn-hover: rgb(255 255 255 / 0.14);
 }
 
 .hero-ctas {
@@ -109,6 +227,17 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 28px;
+}
+
+.hero-side {
+  display: grid;
+  gap: 18px;
+  justify-items: end;
+}
+
+.hero .hero-note {
+  max-width: 44ch;
+  color: rgb(255 255 255 / 0.74);
 }
 
 .hero-meta {
@@ -120,7 +249,7 @@
 }
 
 .hero-meta dt {
-  color: var(--muted);
+  color: rgb(255 255 255 / 0.66);
   margin-bottom: 4px;
 }
 
@@ -131,7 +260,8 @@
 .hero-scroll {
   position: absolute !important;
   left: 50%;
-  bottom: 28px;
+  bottom: calc(var(--m) + 28px);
+  color: #fff;
   translate: -50% 0;
   display: grid;
   justify-items: center;
@@ -169,7 +299,9 @@
 /* before the entrance plays, the hero's parts wait out of sight */
 .h:not(.is-in):not([data-reduce]) .hero-foot,
 .h:not(.is-in):not([data-reduce]) .hero-scroll,
-.h:not(.is-in):not([data-reduce]) .hero-word {
+.h:not(.is-in):not([data-reduce]) .hero-room,
+.h:not(.is-in):not([data-reduce]) .hero-focus,
+.h:not(.is-in):not([data-reduce]) .hero-tag {
   visibility: hidden;
 }
 
@@ -599,9 +731,10 @@
   inset: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.2em;
   margin: 0;
+  padding-top: 13svh;
   pointer-events: none;
 }
 
@@ -823,12 +956,16 @@
 }
 
 /* ---------------------------------------------------------------- samples */
+/* the words hold while the samples fan out beside them, then both leave
+   together: the stage lifts the samples for the chapter's last screen */
 .samples {
-  min-height: 140svh;
-  padding: 30svh var(--m) 16svh;
+  min-height: 200svh;
+  padding: 22svh var(--m) 28svh;
 }
 
 .samples-copy {
+  position: sticky !important;
+  top: 22svh;
   display: grid;
   gap: 28px;
   justify-items: start;
@@ -903,10 +1040,20 @@ html[data-tone='dark'] .chapter-mark {
     aspect-ratio: 4 / 5;
   }
 
-  .ch > .hero-word {
-    font-size: 30vw;
-    place-items: start center;
-    padding-top: 16svh;
+  .ch > .hero-room {
+    padding: 72px 10px 10px;
+  }
+  .hero-pic {
+    clip-path: inset(0 round 22px);
+  }
+  .hero-foot {
+    left: 30px;
+    right: 30px;
+    bottom: 34px;
+  }
+  .ch > .hero-tag {
+    left: calc(var(--tx) + var(--tw) - 28px);
+    top: calc(var(--ty) + 22px);
   }
   .hero-foot {
     flex-direction: column;
@@ -915,6 +1062,9 @@ html[data-tone='dark'] .chapter-mark {
   }
   .hero-meta {
     display: none;
+  }
+  .hero-side {
+    justify-items: start;
   }
   .hero-scroll {
     display: none;
@@ -973,11 +1123,21 @@ html[data-tone='dark'] .chapter-mark {
   .morbi-nums {
     grid-template-columns: 1fr 1fr;
   }
-  .samples-copy {
-    max-width: none;
-  }
+  /* on a phone the samples rise beneath the words instead */
   .samples {
-    padding-bottom: 60svh;
+    min-height: 230svh;
+    padding: 14svh var(--m) 44svh;
+  }
+  .samples-copy {
+    top: 13svh;
+    max-width: none;
+    gap: 20px;
+  }
+  .samples-copy .display {
+    font-size: clamp(3.25rem, 15vw, 4.5rem);
+  }
+  .samples-poster {
+    margin-top: 32px;
   }
   .chapter-mark {
     display: none;

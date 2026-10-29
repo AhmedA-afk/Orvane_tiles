@@ -1,4 +1,4 @@
-import { designById, formatById, lineById, type FinishId, type LineId, type RangeDesign } from './range'
+import { designById, formatById, lineById, type FinishId, type LineId, type RangeDesign } from './range/index.ts'
 
 // SAMPLE DATA. What a dealer sees and a visitor does not: an indicative price
 // per square metre, FOB Mundra, for any configuration; whether a design is in

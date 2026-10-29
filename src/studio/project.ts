@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { store } from '../lib/store'
 import { DEMO } from '../data/demo'
 import { designById, finishById, formatById, formatLabel, labelOf, specFor } from '../data/range'
 import { WHATSAPP_NUMBER } from '../data/site'
@@ -27,6 +27,8 @@ export interface Dealer {
   on: boolean
   showroom: string
   client: string
+  city: string
+  phone: string
 }
 
 const KEY = 'orvane-project'
@@ -35,38 +37,8 @@ const DEALER = 'orvane-dealer'
 const PAYLOAD_KG = 24000
 const WASTE = 1.1
 
-function read<T>(key: string, fallback: T): T {
-  try {
-    const raw = localStorage.getItem(key)
-    return raw ? (JSON.parse(raw) as T) : fallback
-  } catch {
-    return fallback
-  }
-}
-
-/** a small shared store, kept in localStorage, that re-renders whoever uses it */
-function store<T>(key: string, fallback: T) {
-  let value = read(key, fallback)
-  const subs = new Set<() => void>()
-  const set = (next: T) => {
-    value = next
-    localStorage.setItem(key, JSON.stringify(next))
-    subs.forEach((f) => f())
-  }
-  const use = () => {
-    const [, tick] = useState(0)
-    useEffect(() => {
-      const on = () => tick((n) => n + 1)
-      subs.add(on)
-      return () => void subs.delete(on)
-    }, [])
-    return [value, set] as const
-  }
-  return { use, get: () => value, set }
-}
-
 const project = store<ProjectItem[]>(KEY, [])
-const dealer = store<Dealer>(DEALER, { on: false, showroom: '', client: '' })
+const dealer = store<Dealer>(DEALER, { on: false, showroom: '', client: '', city: '', phone: '' })
 
 export const useDealer = dealer.use
 

@@ -9,7 +9,7 @@ import { CutPlanner } from '../configurator/CutPlanner'
 import { EdgeProfiles, type Edge } from '../configurator/EdgeProfiles'
 import { LIGHTS, type Grout, type LightId, type Pattern, type View } from '../configurator/stage-config'
 import { configLine, configSpec, printConfig } from '../configurator/spec'
-import { designById, designsIn, finishById, formatById, formatLabel, lineById, optionsFor, type FinishId, type Format, type RangeDesign } from '../data/range'
+import { designById, designsIn, finishById, formatById, formatLabel, lineById, optionsFor, tileUrl, type FinishId, type Format, type RangeDesign } from '../data/range'
 import { WHATSAPP_NUMBER } from '../data/site'
 import { defaultConfig, MAX_SAMPLES, useQuote, type SampleConfig } from '../lib/quote'
 import { TLink } from '../motion/Transition'
@@ -122,6 +122,20 @@ function Design({ id }: { id: string }) {
       delete html.dataset.tone
     }
   }, [under, light])
+
+  // on a phone, once its actions have scrolled away, the sample stays a thumb away
+  const actions = useRef<HTMLDivElement>(null)
+  const [dock, setDock] = useState(false)
+  useEffect(() => {
+    const on = () => {
+      const a = actions.current?.getBoundingClientRect()
+      const f = document.querySelector('.foot')?.getBoundingClientRect()
+      setDock(!!a && a.bottom < 0 && (!f || f.top > window.innerHeight))
+    }
+    on()
+    window.addEventListener('scroll', on, { passive: true })
+    return () => window.removeEventListener('scroll', on)
+  }, [])
 
   return (
     <div className="dp">
@@ -291,7 +305,7 @@ function Design({ id }: { id: string }) {
           </dl>
           <p className="dp-sku mono">{sku}</p>
 
-          <div className="dp-actions">
+          <div className="dp-actions" ref={actions}>
             <button className="btn btn-ink" disabled={!inBox && full} aria-pressed={inBox} onClick={() => add(cfg)} data-cursor="hover">
               {inBox ? 'In your sample box' : full ? `Sample box full (${MAX_SAMPLES})` : 'Add this sample'}
             </button>
@@ -308,6 +322,19 @@ function Design({ id }: { id: string }) {
           <DemoNote topic="figures" />
         </div>
       </section>
+
+      <div className="dp-dock" data-on={dock || undefined} inert={!dock}>
+        <span className="dp-dock-face" style={{ backgroundImage: `url(${tileUrl(cw.sm)})` }} aria-hidden />
+        <span className="dp-dock-text">
+          <b>{d.name}</b>
+          <span className="num">
+            {formatLabel(format)} · {cfg.thickness} mm · {finishById(cfg.finish).name}
+          </span>
+        </span>
+        <button className="btn btn-ink btn-sm" disabled={!inBox && full} aria-pressed={inBox} onClick={() => add(cfg)}>
+          {inBox ? 'In your box' : full ? 'Box full' : 'Add sample'}
+        </button>
+      </div>
 
       {rooms.length > 0 && (
         <section className="dp-sec" aria-labelledby="rooms-title">

@@ -26,3 +26,5 @@ dist-ssr
 .taste-skill/
 assets/
 brag-output*/
+
+.impeccable/hook.cache.json

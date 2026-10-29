@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { DemoNote } from '../components/Demo'
 import { InteriorImage } from '../components/Interior'
 import { LiquidGlass } from '../components/LiquidGlass'
 import { FINISHES, type Finish } from '../data/catalog'
@@ -10,33 +11,53 @@ import { setPageReady, useRevealed } from '../lib/ready'
 import { gsap, SplitText, whenGsap } from '../motion/gsap'
 import { TLink } from '../motion/Transition'
 import { useReveal } from '../motion/useReveal'
-import { D, intro, pointer, setLook, type Pose } from '../home/store'
+import room from '../home/room.json'
+import { D, follow, pointer, ROOM_STONE, ROOM_TILE, setLook, snap, type Pose } from '../home/store'
 import './home.css'
 
 const Stage = lazy(() => import('../home/Stage'))
 
-// The home page is a short film about one slab, cut to the scroll. The slab
-// floats in the hero, turns edge-on to show how thin it is, fills a black
-// screen where the light runs across it and a glass lens shows the veins,
-// changes stone beside the index of the eight lines, and becomes the floor of a room.
+// The home page is a short film about one slab, cut to the scroll. It opens in
+// a room whose wall is laid in Calacatta; the scroll takes one tile off the
+// wall and towards you, and the room falls away. The tile turns edge-on to
+// show how thin it is, fills a black screen where the light runs across it
+// and a glass lens shows the veins, changes stone beside the index of the
+// eight lines, and becomes the floor of a room.
 // Every scene is a tween on one paused timeline measured in screens of
 // scroll, so it plays the same forwards and back. Without motion, every
 // chapter is simply laid out and readable.
 
-const HERO = (wide: boolean): Pose => ({
-  sx: 0,
-  sy: wide ? 0.02 : 0.1,
-  h: wide ? 0.66 : 0.5,
-  rx: 0.08,
-  ry: -0.62,
-  rz: 0.1,
-  float: 1,
-  shadow: 1,
-  vis: 1,
+/** where the room's tile is on screen: the photograph covers its frame */
+function tileRect(pic: HTMLElement) {
+  const r = pic.getBoundingClientRect()
+  const k = Math.max(r.width / room.w, r.height / room.h)
+  const t = room.tile
+  return {
+    x: r.left + (r.width - room.w * k) / 2 + t.x * k,
+    y: r.top + (r.height - room.h * k) / 2 + t.y * k,
+    w: t.w * k,
+    h: t.h * k,
+  }
+}
+
+/** the slab in the wall, exactly over the tile, on a stage `vw` × `vh` */
+const HERO = (t: ReturnType<typeof tileRect>, vw: number, vh: number): Pose => ({
+  sx: ((t.x + t.w / 2) / vw) * 2 - 1,
+  sy: 1 - ((t.y + t.h / 2) / vh) * 2,
+  h: t.h / vh,
+  rx: 0,
+  ry: 0,
+  rz: 0,
+  float: 0,
+  shadow: 0,
+  vis: 0,
   key: -0.35,
-  dark: 0,
+  // the room's light: lower and warmer than the studio's, so the slab sits in the photograph
+  dark: 0.45,
+  warm: 0.6,
   lens: 0,
   fan: 0,
+  lift: 0,
   lay: 0,
 })
 
@@ -122,19 +143,37 @@ export default function Home() {
 function Hero({ reduce }: { reduce: boolean }) {
   return (
     <section className="ch hero" aria-labelledby="hero-title" data-chapter="Orvane">
-      <h1 id="hero-title" className="hero-word">
-        <span className="hero-letters" aria-hidden>
-          Orvane
-        </span>
-        <span className="visually-hidden">Orvane Ceramica, porcelain slabs from Morbi</span>
-      </h1>
-      {reduce && <img className="hero-poster" src="/renders/hero-light.jpg" alt="" />}
+      {/* the room holds still while its tile comes away; the stage draws the slab between it and the tile's stand-in */}
+      <div className="hero-room" aria-hidden>
+        <div className="hero-pic">
+          <div className="hero-imgs">
+            {!reduce && <img src="/renders/home/room.jpg" alt="" width={room.w} height={room.h} />}
+            {!reduce && <img className="hero-blur" src="/renders/home/room-blur.jpg" alt="" width={room.w} height={room.h} />}
+            <img className="hero-full" src="/renders/home/room-full.jpg" alt="" width={room.w} height={room.h} fetchPriority="high" />
+          </div>
+        </div>
+        <span className="hero-cast" />
+      </div>
+      {!reduce && <img className="hero-piece" src="/renders/home/piece.jpg" alt="" aria-hidden />}
+      <span className="hero-focus" aria-hidden />
+      <p className="hero-tag" aria-hidden>
+        <b>Calacatta Oro</b>
+        <span>Maestà, polished</span>
+      </p>
       <div className="hero-foot">
         <div className="hero-say">
-          <p className="lead hero-line">Porcelain slabs that read as stone.</p>
-          <p className="lead hero-line muted">Pressed, fired and polished in Morbi.</p>
+          <h1 id="hero-title" className="hero-title">
+            <span className="visually-hidden">Orvane Ceramica. </span>
+            <span className="hero-line">
+              <span>Porcelain that</span>
+            </span>{' '}
+            <span className="hero-line">
+              <span>reads as stone.</span>
+            </span>
+          </h1>
+          <p className="hero-sub">Slabs and tiles, pressed, fired and polished in Morbi.</p>
           <div className="hero-ctas">
-            <TLink className="btn btn-ink btn-arrow" to="/collections" data-cursor="hover">
+            <TLink className="btn btn-light btn-arrow" to="/collections" data-cursor="hover">
               Explore the collection
             </TLink>
             <TLink className="btn btn-line" to="/quote" data-cursor="hover">
@@ -142,20 +181,23 @@ function Hero({ reduce }: { reduce: boolean }) {
             </TLink>
           </div>
         </div>
-        <dl className="hero-meta mono">
-          <div>
-            <dt>Collection</dt>
-            <dd>2026</dd>
-          </div>
-          <div>
-            <dt>Designs</dt>
-            <dd>{COUNTS.designs}</dd>
-          </div>
-          <div>
-            <dt>Morbi</dt>
-            <dd>22.82° N 70.84° E</dd>
-          </div>
-        </dl>
+        <div className="hero-side">
+          <dl className="hero-meta mono">
+            <div>
+              <dt>Collection</dt>
+              <dd>2026</dd>
+            </div>
+            <div>
+              <dt>Designs</dt>
+              <dd>{COUNTS.designs}</dd>
+            </div>
+            <div>
+              <dt>Morbi</dt>
+              <dd>22.82° N 70.84° E</dd>
+            </div>
+          </dl>
+          <DemoNote topic="imagery" className="hero-note" />
+        </div>
       </div>
       <p className="hero-scroll mono" aria-hidden>
         <span>Scroll</span>
@@ -594,7 +636,7 @@ function useFilm(
   useEffect(() => {
     if (!enabled) return
     let tl: ReturnType<typeof gsap.timeline> | null = null
-    let S = { surface: 0, stones: 0, stonesEnd: 0, room: 0 }
+    let S = { edge: 0, surface: 0, stones: 0, stonesEnd: 0, room: 0 }
     let unit = window.innerHeight
     let gone = false
     let splits: InstanceType<typeof SplitText>[] = []
@@ -623,9 +665,20 @@ function useFilm(
       const spacesLen = len(q('.spaces'))
       const morbi = top(q('.morbi'))
       const samples = top(q('.samples'))
-      S = { surface, stones, stonesEnd: stones + stonesLen, room }
+      const samplesLen = len(q('.samples'))
+      S = { edge: thin + (thinLen - 1) * 0.32, surface, stones, stonesEnd: stones + stonesLen, room }
 
-      Object.assign(D, HERO(wide))
+      // the tile in the wall, and the slab put exactly over it
+      const hold = q('.hero-room')
+      el.classList.add('is-film')
+      gsap.set(hold, { clearProps: 'transform' })
+      const tile = tileRect(q('.hero-pic'))
+      for (const [k, v] of Object.entries({ tx: tile.x, ty: tile.y, tw: tile.w, th: tile.h })) el.style.setProperty(`--${k}`, `${v}px`)
+      const hero = HERO(tile, hold.clientWidth, hold.clientHeight)
+      Object.assign(D, hero)
+      if (window.scrollY < 2) snap.now = true
+      const piece = q('.hero-piece')
+      follow.el = piece
       const bg = q('.h-backdrop')
       gsap.set(bg, { backgroundColor: '#f1f1ee' })
       const tone = { k: 0 }
@@ -634,9 +687,33 @@ function useFilm(
       const io = 'power2.inOut'
       const out = 'power3.out'
 
-      // hero → thin: the slab squares up and starts to turn
-      tl.to(D, { ry: -1.2, rx: 0, rz: 0, h: wide ? 0.78 : 0.62, sy: 0, float: 0.25, key: -0.7, ease: io, duration: 1 }, 0)
-      tl.to(q('.hero-word'), { yPercent: -18, opacity: 0, ease: 'power1.in', duration: 0.8 }, 0.05)
+      // the room: the tile comes off the wall and towards you, tipping as it
+      // leaves, and the room falls away behind it; then it squares up and
+      // starts to turn. At first the flat tile in the page covers the slab
+      // (it has the photograph's light), then fades to hand over.
+      tl.to(D, { vis: 1, duration: 0.005 }, 0)
+      tl.to(q('.hero-full'), { autoAlpha: 0, duration: 0.005 }, 0)
+      tl.fromTo(piece, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.005 }, 0)
+      tl.to(piece, { autoAlpha: 0, duration: 0.12 }, 0.06)
+      tl.to([q('.hero-focus'), q('.hero-tag')], { autoAlpha: 0, duration: 0.08 }, 0)
+      tl.to([q('.hero-foot'), q('.hero-scroll')], { autoAlpha: 0, y: -40, ease: 'power1.in', duration: 0.3 }, 0)
+      // it slides down out of its place as it comes, so the gap it leaves shows
+      tl.to(D, { sy: wide ? 0.02 : 0.08, ease: 'power1.inOut', duration: 0.44 }, 0)
+      tl.to(D, { h: hero.h * 2.1, ease: 'power2.in', duration: 0.44 }, 0)
+      tl.to(D, { rx: 0.14, ease: 'sine.inOut', duration: 0.24 }, 0.16)
+      // its shadow on the wall, thrown right by the low sun, spreading as it leaves
+      const cast = q('.hero-cast')
+      tl.fromTo(cast, { opacity: 0, x: 0, y: 0 }, { opacity: 0.55, x: 12, y: 6, ease: 'power1.out', duration: 0.14 }, 0.02)
+      tl.to(cast, { opacity: 0, x: 44, y: 20, scale: 1.18, ease: 'power1.in', duration: 0.26 }, 0.16)
+      // the eye goes to the tile: the room softens, steps back and falls away
+      tl.fromTo(q('.hero-blur'), { autoAlpha: 0 }, { autoAlpha: 1, ease: 'none', duration: 0.34 }, 0.08)
+      tl.to(hold, { scale: 0.95, ease: 'power1.inOut', duration: 0.6 }, 0.1)
+      tl.to(hold, { autoAlpha: 0, ease: 'power1.in', duration: 0.38 }, 0.36)
+      tl.to(
+        D,
+        { ry: -1.2, rx: 0, rz: 0, sx: 0, sy: 0, h: wide ? 0.78 : 0.62, float: 0.25, shadow: 1, key: -0.7, dark: 0, warm: 0, ease: io, duration: 0.58 },
+        0.42,
+      )
 
       // thin: edge-on, then face-on with its dimensions
       const pinT = thinLen - 1
@@ -658,7 +735,7 @@ function useFilm(
       const b = new SplitText(q('.thin-b h3'), { type: 'lines,words', mask: 'lines' })
       splits.push(b)
       tl.from(b.words, { yPercent: 110, stagger: 0.03, ease: out, duration: pinT * 0.1 }, thin + pinT * 0.6)
-      tl.fromTo(q('.thin-b p'), { opacity: 0, y: 24 }, { opacity: 1, y: 0, ease: out, duration: pinT * 0.1 }, thin + pinT * 0.64)
+      tl.fromTo(el.querySelectorAll('.thin-b p, .thin-b .thin-link'), { opacity: 0, y: 24 }, { opacity: 1, y: 0, stagger: pinT * 0.02, ease: out, duration: pinT * 0.1 }, thin + pinT * 0.64)
 
       // into the dark: the measures clear, the slab turns to landscape, the room goes black
       const toDark = thin + thinLen - 1
@@ -697,16 +774,18 @@ function useFilm(
 
       // the index holds; then the slab lies down to become a floor
       const lay = stones + stonesLen - 1
-      tl.to(D, { sx: 0, sy: -0.15, rx: -1.05, ry: 0, rz: 0.0, h: wide ? 1.15 : 0.9, float: 0, shadow: 0, ease: io, duration: 1.1 }, lay)
+      // (below the words that announce it, which sit at the top)
+      tl.to(D, { sx: 0, sy: wide ? -0.24 : -0.3, rx: -1.05, ry: 0, rz: 0.0, h: wide ? 1.15 : 0.9, float: 0, shadow: 0, ease: io, duration: 1.1 }, lay)
 
       // the room opens in a circle; the slab is under it
       const rp = roomLen - 1
       const say = q('.room-say')
-      tl.fromTo(say.children, { yPercent: 40, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: 0.08, ease: out, duration: 0.35 }, room - 0.45)
+      // (once the chapter has nearly reached the top, so the words arrive above the floor, not on it)
+      tl.fromTo(say.children, { yPercent: 40, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: 0.08, ease: out, duration: 0.35 }, room - 0.15)
       tl.fromTo(
         q('.room-frame'),
-        { clipPath: 'circle(0% at 50% 58%)' },
-        { clipPath: 'circle(75% at 50% 58%)', ease: 'power2.in', duration: rp * 0.55 },
+        { clipPath: 'circle(0% at 50% 64%)' },
+        { clipPath: 'circle(80% at 50% 64%)', ease: 'power2.in', duration: rp * 0.55 },
         room,
       )
       tl.fromTo(q('.room-frame img'), { scale: 1.25 }, { scale: 1, ease: 'power2.out', duration: rp * 0.7 }, room)
@@ -725,8 +804,11 @@ function useFilm(
       tl.to(tone, { k: 1, ease: 'none', duration: 0.5 }, morbi - 0.6)
       tl.to(bg, { backgroundColor: '#f1f1ee', ease: io, duration: 0.5 }, samples - 0.6)
       tl.to(tone, { k: 0, ease: 'none', duration: 0.5 }, samples - 0.6)
-      tl.to(D, { fan: 1, ease: 'power3.out', duration: 0.9 }, samples - 0.3)
-      tl.to({}, { duration: 1 }, samples + 1)
+      // on a phone the samples rise under the words once those have settled at the top
+      tl.to(D, { fan: 1, ease: 'power3.out', duration: 0.9 }, samples - (wide ? 0.3 : 0))
+      // and leave with the chapter, a screen's height for a screen of scroll, before the footer
+      const leave = Math.max(samples + 1, samples + samplesLen - 1)
+      tl.to(D, { lift: 1, ease: 'none', duration: 1 }, leave)
 
       const html = document.documentElement
       let lastTone = ''
@@ -744,7 +826,9 @@ function useFilm(
         }
         // which stone, which finish, for this part of the film
         const L = live.current!
-        if (t < S.surface - 0.5) setLook({ design: 'calacatta', finish: 'Glossy' })
+        // the tile from the room until it is edge-on, then the same stone as a slab
+        if (t < S.edge) setLook({ design: ROOM_TILE, finish: 'Glossy' })
+        else if (t < S.surface - 0.5) setLook({ design: ROOM_STONE, finish: 'Glossy' })
         else if (t < S.stones - 0.4) setLook({ design: 'nero', finish: L.finish })
         else if (t < S.stonesEnd - 1) {
           setLook({ design: LINES[L.stone].feature, finish: 'Glossy' })
@@ -776,6 +860,8 @@ function useFilm(
       if (tick) gsap?.ticker.remove(tick)
       tl?.kill()
       splits.forEach((s) => s.revert())
+      follow.el = null
+      root.current?.classList.remove('is-film')
       delete document.documentElement.dataset.tone
       document.documentElement.classList.remove('loupe-on')
     }
@@ -790,7 +876,6 @@ function useIntro(root: React.RefObject<HTMLDivElement | null>, go: boolean, red
     if (!go || played.current) return
     played.current = true
     if (reduce) {
-      intro.p = 1
       root.current?.classList.add('is-in')
       return
     }
@@ -798,17 +883,17 @@ function useIntro(root: React.RefObject<HTMLDivElement | null>, go: boolean, red
       const el = root.current
       if (!el) return
       const q = gsap.utils.selector(el)
-      const split = new SplitText(q('.hero-letters'), { type: 'chars', mask: 'chars', charsClass: 'hc' })
+      // the room opens out of a smaller frame, then the words rise in their masks
       gsap
         .timeline({ defaults: { ease: 'expo.out' } })
         .add(() => el.classList.add('is-in'))
-        .to(intro, { p: 1, duration: 2.2 }, 0)
-        .from(split.chars, { yPercent: 115, duration: 1.4, stagger: 0.06 }, 0.05)
-        .from(q('.hero-line'), { yPercent: 60, opacity: 0, duration: 1.1, stagger: 0.08 }, 0.45)
-        .from(q('.hero-ctas > *'), { y: 20, opacity: 0, duration: 1, stagger: 0.08 }, 0.6)
-        .from(q('.hero-meta > div, .hero-scroll'), { y: 14, opacity: 0, duration: 1, stagger: 0.06 }, 0.75)
+        .from(q('.hero-pic'), { clipPath: 'inset(7% 9% 7% 9% round 40px)', duration: 2 }, 0)
+        .from(q('.hero-imgs'), { scale: 1.14, duration: 2.6 }, 0)
+        .from(q('.hero-line > span'), { yPercent: 110, duration: 1.3, stagger: 0.08 }, 0.4)
+        .from(q('.hero-sub, .hero-ctas > *'), { y: 20, opacity: 0, duration: 1, stagger: 0.07 }, 0.6)
+        .from(q('.hero-meta > div, .hero-scroll'), { y: 14, opacity: 0, duration: 1, stagger: 0.06 }, 0.8)
+        .from(q('.hero-focus, .hero-tag'), { opacity: 0, scale: 1.06, duration: 1.2, stagger: 0.1 }, 1.3)
         .from('.nav > *', { y: -16, opacity: 0, duration: 1, stagger: 0.08 }, 0.5)
-        .add(() => split.revert())
     })
   }, [go, reduce, root])
 }

@@ -13,7 +13,7 @@ node scripts/render-stills.mjs [filter]   # re-render the stills in public/rende
 
 | Route | What it does |
 |---|---|
-| `/` | A short film about one slab, cut to the scroll. It stands in front of the wordmark, turns edge-on to show how thin it is, turns face-on with its measures, then goes dark: light runs across black marble and a loupe magnifies the veins, with the finish switchable. It changes stone beside the index of the eight lines, lies down to become the floor of a path-traced room that opens in a circle, then the five spaces pass sideways, then Morbi, the sample box and the footer. |
+| `/` | A short film about one slab, cut to the scroll. It opens in a room whose wall is laid in Calacatta; the scroll takes one tile off the wall and towards you, leaving its bare adhesive bed, while the room goes out of focus and falls away. The tile turns edge-on to show how thin it is, turns face-on with its measures, then goes dark: light runs across black marble and a loupe magnifies the veins, with the finish switchable. It changes stone beside the index of the eight lines, lies down to become the floor of a path-traced room that opens in a circle, then the five spaces pass sideways, then Morbi, the sample box and the footer. |
 | `/collections` | The range: 69 designs as studio renders, grouped by line, narrowed by six glass menus (line, look, colour, finish, size, thickness); colourway dots switch a card's render. |
 | `/collections/:id` | The configurator: colourway, format, thickness and finish, live and in the URL. The stage shows the slab (and its edge), at scale beside a person and a door, bookmatched 2- or 4-way, laid as a floor (straight, offset, herringbone or chevron, the grout matched to the stone), or two finishes side by side, in daylight, evening or showroom light, with raking light. Below: the printed faces, technologies, cut to size, edge profiles, the full spec, a print-to-PDF sheet, and the sample box. |
 | `/lines`, `/lines/:id` | The eight lines: an index, and a page per line with its story, formats drawn to scale, thicknesses, finishes, technologies and designs. |
@@ -26,13 +26,15 @@ node scripts/render-stills.mjs [filter]   # re-render the stills in public/rende
 | `/studio/upload` | Your own design: a picture of a slab or tile, cropped to the piece it shows, named and given a line, then laid in the Studio and the photo tool at true size. Kept on the device (IndexedDB), never uploaded. |
 | `/studio/insights` | What visitors do in the Studio (stones laid, rooms, hours, finishes, and how far they go, from a room to an enquiry), a sample month beside this device's own counts. |
 | `/studio/photo` | Any design laid on a photograph of your own floor: four corners mark the plane, the stone runs out to the floor's edges in true perspective and scale with the photograph's light kept, a brush adds floor or keeps furniture, and the result saves as an image. The photograph never leaves the device. |
+| `/dealers` | Orvane for dealers, the portal a showroom signs into, in its own name (shop, city and phone edited in the sidebar). Overview; a showroom visualizer (an empty room re-floored before and after, and three ways to use the Studio in a shop); a marketing kit for each season (three posts, a nine-second reel recorded in the browser, a WhatsApp catalogue card with its message, a printable brochure), all in the dealer's name; stock by batch, shade and caliber with an order put together and sent from a phone and tracked step by step; a WhatsApp assistant that answers and routes each enquiry to the right person; and new dealers and export buyers, with where the network is thin and a first message written for each. All sample data. |
+| `/downloads` | The PDFs: the 20-page collection catalogue, a five-page brochure for each line, the technical data sheet, the trade price list (sample prices), installation and care, and packing and containers. Linked from the footer, the collection, each line page and the dealers' kit. |
 | `/export` | A container loading itself in 3D for any size and 20 or 40 ft, with the figures; days at sea from Mundra; the papers. |
 | `/factory` | The kiln, then the line as a pinned sideways scroll through six stations; numbers, certificates, fairs, a visit. |
 | `/quote` | Samples, a container price or a visit: the form writes the WhatsApp message as you go. |
 
 ## 3D
 
-`src/home/`: the home film. `Stage` is one fixed, transparent canvas holding the protagonist slab, the loupe (a second camera renders the stone under the pointer into a texture) and the sample fan; `store` holds the pose the scroll timeline writes and the stage eases towards, in screen terms.
+`src/home/`: the home film. `Stage` is one fixed, transparent canvas holding the protagonist slab, the loupe (a second camera renders the stone under the pointer into a texture) and the sample fan; `store` holds the pose the scroll timeline writes and the stage eases towards, in screen terms. The opening room is a generated photograph (`assets/imagery/hero-room.png`) with a generated face of its stone (`hero-tile.png`); `python3 scripts/make-hero-room.py` cuts the centre tile out of it (the room with its bare bed, the room whole, the tile in the room's light, the tile's face for the slab, the same stone as a 1:2 slab) into `public/renders/home/` and writes where the tile sits to `src/home/room.json`. The page measures where that tile lands on screen and starts the slab exactly there; a flat copy of the tile covers the slab for the first moment, then fades, so the photograph hands over to 3D without a seam.
 
 The Studio's sales tools (`src/studio/SalesTools.tsx`, `project.ts`, `src/data/trade.ts`): a project built room by room, with every stone's area, pieces, boxes or crates, weight and 20 ft containers, printed as a schedule or sent on WhatsApp; dealer mode, with sample trade prices FOB Mundra, stock and minimum orders, a quotation in the showroom's and client's names, a showroom screen (full screen, the site hidden, a tour that runs itself when left alone) and a QR code that hands the room to the client's phone.
 
@@ -63,6 +65,8 @@ python3 scripts/build-interiors.py [--sheet out.jpg]                   # web ver
 ```
 
 Disclaimers live in `src/data/demo.ts` and show beside what they qualify (`<DemoNote>`); certifications use our own typographic badges (`<CertBadge>`), never official marks. Interior imagery follows `docs/imagery.md`.
+
+PDFs: `node scripts/make-pdfs.mjs` lays out the catalogue, brochures, data sheet, price list and guides from the range data and its renders and interiors, prints them through headless Chrome into `public/downloads/` with a cover thumbnail each, and writes `src/data/downloads.json`, which the downloads page reads. Re-run it after the range, prices or pictures change. `PREVIEW=<dir>` also saves every page as a JPEG to check.
 
 ## Before showing this to a client
 

@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react'
+import { designById, LINES, tileUrl } from '../data/range'
 import { ADDRESS, EMAIL, WHATSAPP_NUMBER } from '../data/site'
 import { TLink } from '../motion/Transition'
 import { NAV_LINKS } from './Nav'
 
-// The close of every page: columns of plain links, the studio's live time and
-// coordinates, and the name set across the full width.
+// The close of every page: the sample box asked for beside a rack of the eight
+// lines, each its own stone; then columns of plain links, the studio's live
+// time and coordinates, and the name set across the full width.
+
+const RACK = LINES.map((l) => {
+  const d = designById(l.feature)
+  return { id: l.id, name: l.name, face: d ? tileUrl(d.colourways[0].sm) : '' }
+})
 
 const YEAR = new Date().getFullYear()
 
@@ -24,26 +31,48 @@ export function SiteFooter() {
   const phone = `+${WHATSAPP_NUMBER.slice(0, 2)} ${WHATSAPP_NUMBER.slice(2, 7)} ${WHATSAPP_NUMBER.slice(7)}`
   return (
     <footer className="foot">
-      <div className="foot-cols">
+      <div className="foot-top">
         <div className="foot-lead">
           <p className="foot-say">Porcelain that reads as stone, pressed and fired in Morbi.</p>
-          <TLink className="btn btn-ink" to="/quote" data-cursor="hover">
-            Order a sample box
-          </TLink>
+          <div className="foot-acts">
+            <TLink className="btn btn-ink btn-arrow" to="/quote" data-cursor="hover">
+              Order a sample box
+            </TLink>
+            <TLink className="btn btn-line" to="/downloads" data-cursor="hover">
+              The catalogue, PDF
+            </TLink>
+          </div>
         </div>
+        <ul className="foot-rack" aria-label="The eight lines">
+          {RACK.map((l) => (
+            <li key={l.id}>
+              <TLink to={`/lines/${l.id}`} data-cursor="Open">
+                <span className="foot-face" style={{ backgroundImage: `url(${l.face})` }} />
+                <span className="foot-line">{l.name}</span>
+              </TLink>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="foot-cols">
         <nav aria-label="Site">
           <p className="mono">Site</p>
-          {NAV_LINKS.map((l) => (
-            <TLink key={l.to} className="u" to={l.to}>
-              {l.label}
+          <div className="foot-links">
+            {NAV_LINKS.map((l) => (
+              <TLink key={l.to} className="u" to={l.to}>
+                {l.label}
+              </TLink>
+            ))}
+            <TLink className="u" to="/dealers">
+              Dealer portal
             </TLink>
-          ))}
-          <TLink className="u" to="/studio">
-            Studio
-          </TLink>
-          <TLink className="u" to="/quote">
-            Sample box
-          </TLink>
+            <TLink className="u" to="/downloads">
+              Downloads
+            </TLink>
+            <TLink className="u" to="/quote">
+              Sample box
+            </TLink>
+          </div>
         </nav>
         <div>
           <p className="mono">Studio</p>

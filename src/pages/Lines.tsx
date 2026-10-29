@@ -7,16 +7,19 @@ import { InteriorCarousel } from '../components/InteriorCarousel'
 import { TechList } from '../components/TechList'
 import { interiorsIn } from '../data/range/interiors'
 import {
+  designById,
   designsIn,
   formatById,
   formatLabel,
   LINES,
   lineById,
   thicknessByMm,
+  tileUrl,
   type Line,
   type LineId,
 } from '../data/range'
 import { TLink } from '../motion/Transition'
+import { DOWNLOADS } from './Downloads'
 import { useReveal } from '../motion/useReveal'
 import NotFound from './NotFound'
 import './lines.css'
@@ -70,7 +73,7 @@ export default function Lines() {
                 </span>
                 {interiorsIn(l.id)[0] ? (
                   <span className="ln-room" aria-hidden>
-                    <InteriorImage shot={interiorsIn(l.id)[0]} sizes="240px" />
+                    <InteriorImage shot={interiorsIn(l.id)[0]} sizes="(max-width: 899px) 92vw, 240px" />
                   </span>
                 ) : (
                   <span className="ln-fan" aria-hidden>
@@ -102,6 +105,9 @@ function LineView({ id }: { id: LineId }) {
   const formats = l.formats.map((f) => formatById(f)!)
   const xxl = formats.some((f) => f.demo)
   const next = LINES[(LINES.findIndex((x) => x.id === id) + 1) % LINES.length]
+  const nextStone = designById(next.feature)
+  const nextFace = nextStone ? tileUrl(nextStone.colourways[0].sm) : ''
+  const brochure = DOWNLOADS.find((f) => f.line === id)
 
   return (
     <div className="lp" ref={root}>
@@ -120,6 +126,11 @@ function LineView({ id }: { id: LineId }) {
           <div className="lp-head-side" data-rv>
             <p className="lp-tag">{l.tagline}</p>
             <p className="lp-story">{l.story}</p>
+            {brochure && (
+              <a className="btn btn-line btn-sm" href={`/downloads/${brochure.file}`} download data-cursor="hover">
+                The brochure, {brochure.pages} pages
+              </a>
+            )}
           </div>
         </div>
       </header>
@@ -192,9 +203,14 @@ function LineView({ id }: { id: LineId }) {
       </section>
 
       <TLink to={`/lines/${next.id}`} className="lp-next" data-cursor="Next">
-        <span className="mono muted">Next line</span>
-        <span className="lp-next-name">{next.name}</span>
-        <span className="muted">{next.kind}</span>
+        <span className="lp-next-text">
+          <span className="mono muted">Next line</span>
+          <span className="lp-next-name">{next.name}</span>
+          <span className="lp-next-kind">
+            {next.kind}. {next.tagline}
+          </span>
+        </span>
+        <span className="lp-next-face" style={{ backgroundImage: `url(${nextFace})` }} aria-hidden />
       </TLink>
     </div>
   )

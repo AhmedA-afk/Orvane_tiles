@@ -4,6 +4,7 @@ import { InteriorImage } from '../components/Interior'
 import { Close, shot } from '../components/Showcase'
 import { TechList } from '../components/TechList'
 import { TECHNOLOGIES } from '../data/range'
+import { CERTS, TESTS } from '../data/standards'
 import { TLink } from '../motion/Transition'
 import { useReveal } from '../motion/useReveal'
 import './showcase.css'
@@ -32,25 +33,6 @@ const FILMS = [
     say: 'Four slabs fall into sequence, and a bookmatch opens like a book.',
     room: 'gemelli-azzurro-living',
   },
-]
-
-const TESTS: [string, string, string][] = [
-  ['ISO 13006 · EN 14411', 'Classification of the body', 'Group BIa, the densest porcelain'],
-  ['ISO 10545-3', 'Water absorption', '≤ 0.1% by weight'],
-  ['ISO 10545-4', 'Breaking strength', '≥ 40 N/mm², ≥ 50 N/mm² from 12 mm'],
-  ['ISO 10545-9', 'Thermal shock', 'Passed'],
-  ['ISO 10545-12', 'Frost resistance', 'Passed, 100 cycles'],
-  ['ISO 10545-14', 'Stain resistance', 'Class 5'],
-  ['DIN 51130', 'Slip, on the ramp', 'R9 to R12, by finish'],
-  ['ANSI A326.3', 'Wet slip (DCOF)', '≥ 0.42 on Presa and Grip'],
-]
-
-const CERTS: [string, string][] = [
-  ['ISO 9001', 'Quality management'],
-  ['ISO 14001', 'Environmental management'],
-  ['ISO 45001', 'Health and safety'],
-  ['CE', 'EN 14411 conformity'],
-  ['IS 15622', 'Bureau of Indian Standards'],
 ]
 
 export default function Technology() {

@@ -123,7 +123,10 @@ function Catalogue() {
         </h1>
         <p className="cl-lede lead" data-rv>
           Every design is rendered from the scan it is printed from. Open one to configure it: colour, size, thickness
-          and finish, live.
+          and finish, live.{' '}
+          <TLink className="u" to="/downloads">
+            Or take it all as a catalogue.
+          </TLink>
         </p>
       </header>
 

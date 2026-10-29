@@ -25,25 +25,37 @@ export const D = {
   key: -0.35,
   /** 0 light studio … 1 black studio */
   dark: 0,
+  /** 0 daylight … 1 lamp-warm light */
+  warm: 0,
   /** 0..1: the glass loupe that follows the pointer */
   lens: 0,
   /** 0..1: four sample tiles fanning out of the slab's place */
   fan: 0,
+  /** screen heights the sample tiles have risen, leaving with their chapter */
+  lift: 0,
   /** 0..1: the slab lies down, becoming a floor */
   lay: 0,
 }
 
 export type Pose = typeof D
 
-/** the intro: 0 before the page has been revealed, 1 after */
-export const intro = { p: 0 }
+/** set to put the stage straight into the pose instead of easing there */
+export const snap = { now: false }
+
+/** the tile's flat stand-in in the page, which the stage keeps over the slab */
+export const follow: { el: HTMLElement | null } = { el: null }
+
+/** the film opens on a tile in a room (`ROOM_TILE`, its shape on that wall);
+ *  once it has turned edge-on it is the same stone as an 800 × 1600 slab (`ROOM_STONE`) */
+export const ROOM_TILE = 'room-tile'
+export const ROOM_STONE = 'room-stone'
 
 /** live pointer, -1..1 */
 export const pointer = { x: 0, y: 0, active: false }
 
 // a tiny store for the two things React does need to know: which stone, which finish
 type Look = { design: string; finish: Finish }
-let look: Look = { design: 'calacatta', finish: 'Glossy' }
+let look: Look = { design: ROOM_TILE, finish: 'Glossy' }
 const subs = new Set<() => void>()
 export const setLook = (next: Partial<Look>) => {
   const merged = { ...look, ...next }

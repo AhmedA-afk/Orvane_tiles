@@ -33,7 +33,8 @@
 /* ---- the filter bar ---- */
 .cl-bar-wrap {
   position: sticky;
-  top: 74px;
+  top: var(--nav-space);
+  transition: top 0.6s var(--ease);
   z-index: 55;
   display: flex;
   justify-content: center;
@@ -419,18 +420,41 @@
   }
 }
 
+/* a phone: one row of menus that scrolls sideways, on a denser glass so the
+   cards passing under it stay out of the way; each menu opens across the bar */
 @media (max-width: 560px) {
   .cl-bar {
-    flex-wrap: wrap;
-    justify-content: center;
-    border-radius: 24px !important;
+    --lg-tint: rgb(246 246 243 / 0.84);
+    width: 100%;
   }
   .cl-menus {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .cl-menus::-webkit-scrollbar {
+    display: none;
+  }
+  .cl-menu {
+    position: static;
+  }
+  .cl-pop {
+    left: 0;
+    right: 0;
+    top: calc(100% + 8px);
+    min-width: 0;
+    max-height: 62svh;
+    overflow-y: auto;
+  }
+  .cl-pop.is-cols {
+    grid-template-columns: 1fr 1fr;
+    min-width: 0;
   }
   .cl-menu-btn {
-    height: 36px;
+    flex: none;
+    height: 40px;
     padding: 0 8px 0 12px;
     font-size: 0.8125rem;
   }

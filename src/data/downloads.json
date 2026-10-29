@@ -1,0 +1,127 @@
+[
+  {
+    "file": "orvane-collection-2026.pdf",
+    "thumb": "thumbs/orvane-collection-2026.jpg",
+    "title": "Collection 2026",
+    "kind": "Catalogue",
+    "about": "All eight lines and 69 designs, with rooms, formats, finishes and the technical data.",
+    "pages": 20,
+    "bytes": 5841379
+  },
+  {
+    "file": "orvane-maesta-brochure.pdf",
+    "thumb": "thumbs/orvane-maesta-brochure.jpg",
+    "title": "Maestà",
+    "kind": "Line brochure",
+    "about": "The largest slabs: One stone, floor to ceiling.",
+    "line": "maesta",
+    "pages": 5,
+    "bytes": 2303774
+  },
+  {
+    "file": "orvane-gemelli-brochure.pdf",
+    "thumb": "thumbs/orvane-gemelli-brochure.jpg",
+    "title": "Gemelli",
+    "kind": "Line brochure",
+    "about": "Bookmatched and rare: Stones that come in pairs.",
+    "line": "gemelli",
+    "pages": 5,
+    "bytes": 2742030
+  },
+  {
+    "file": "orvane-velo-brochure.pdf",
+    "thumb": "thumbs/orvane-velo-brochure.jpg",
+    "title": "Velo",
+    "kind": "Line brochure",
+    "about": "Ultra-thin panels: Three and a half millimetres of stone.",
+    "line": "velo",
+    "pages": 5,
+    "bytes": 1447872
+  },
+  {
+    "file": "orvane-cucina-brochure.pdf",
+    "thumb": "thumbs/orvane-cucina-brochure.jpg",
+    "title": "Cucina",
+    "kind": "Line brochure",
+    "about": "Kitchen surfaces: Cut it, mitre it, cook on it.",
+    "line": "cucina",
+    "pages": 5,
+    "bytes": 2057147
+  },
+  {
+    "file": "orvane-terme-brochure.pdf",
+    "thumb": "thumbs/orvane-terme-brochure.jpg",
+    "title": "Terme",
+    "kind": "Line brochure",
+    "about": "Bath and spa: Calm to look at, safe underfoot.",
+    "line": "terme",
+    "pages": 5,
+    "bytes": 1822140
+  },
+  {
+    "file": "orvane-aperto-brochure.pdf",
+    "thumb": "thumbs/orvane-aperto-brochure.jpg",
+    "title": "Aperto",
+    "kind": "Line brochure",
+    "about": "Outdoor and pool: Twenty millimetres for sun, rain and frost.",
+    "line": "aperto",
+    "pages": 5,
+    "bytes": 2782105
+  },
+  {
+    "file": "orvane-legno-brochure.pdf",
+    "thumb": "thumbs/orvane-legno-brochure.jpg",
+    "title": "Legno",
+    "kind": "Line brochure",
+    "about": "Wood in porcelain: Planks that never warp.",
+    "line": "legno",
+    "pages": 5,
+    "bytes": 1972782
+  },
+  {
+    "file": "orvane-tattile-brochure.pdf",
+    "thumb": "thumbs/orvane-tattile-brochure.jpg",
+    "title": "Tattile",
+    "kind": "Line brochure",
+    "about": "Texture, terrazzo and metal: Surfaces you want to touch.",
+    "line": "tattile",
+    "pages": 5,
+    "bytes": 3105912
+  },
+  {
+    "file": "orvane-technical-data-2026.pdf",
+    "thumb": "thumbs/orvane-technical-data-2026.jpg",
+    "title": "Technical data sheet",
+    "kind": "Technical",
+    "about": "Standards and results, certificates, and each line’s body, weight and slip ratings.",
+    "pages": 2,
+    "bytes": 196527
+  },
+  {
+    "file": "orvane-price-list-2026.pdf",
+    "thumb": "thumbs/orvane-price-list-2026.jpg",
+    "title": "Trade price list",
+    "kind": "Trade",
+    "about": "Every design in every format, per m² FOB Mundra. Sample prices for a demo company.",
+    "pages": 5,
+    "bytes": 269929
+  },
+  {
+    "file": "orvane-installation-and-care.pdf",
+    "thumb": "thumbs/orvane-installation-and-care.jpg",
+    "title": "Installation and care",
+    "kind": "Guide",
+    "about": "Checking batches, moving large slabs, adhesive, joints, cutting, cleaning and outdoor laying.",
+    "pages": 4,
+    "bytes": 933882
+  },
+  {
+    "file": "orvane-packing-and-containers.pdf",
+    "thumb": "thumbs/orvane-packing-and-containers.jpg",
+    "title": "Packing and containers",
+    "kind": "Guide",
+    "about": "Pieces, area and weight per box or crate, and what a 20 ft container holds, for every line and format.",
+    "pages": 2,
+    "bytes": 177300
+  }
+]

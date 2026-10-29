@@ -28,6 +28,8 @@ import StudioPage from './pages/StudioPage'
 import PhotoStudio from './pages/PhotoStudio'
 import UploadPage from './pages/UploadPage'
 import InsightsPage from './pages/InsightsPage'
+import DealerPortal from './pages/DealerPortal'
+import Downloads from './pages/Downloads'
 
 const TITLES: Record<string, string> = {
   '/': 'Porcelain Slabs from Morbi, India',
@@ -37,6 +39,7 @@ const TITLES: Record<string, string> = {
   '/studio/photo': 'Your Room, in Stone',
   '/studio/upload': 'Your Design, in a Room',
   '/studio/insights': 'Studio Insights',
+  '/downloads': 'Catalogues and Downloads',
   '/export': 'Export and Container Loading',
   '/factory': 'The Factory in Morbi',
   '/quote': 'Samples, Prices and Visits',
@@ -58,7 +61,9 @@ function PageTitle() {
           ? LINES.find((l) => l.id === b)?.name
           : a === 'spaces' && b
             ? spaceById(b)?.name
-            : undefined
+            : a === 'dealers'
+              ? 'Dealer Portal'
+              : undefined
     document.title = `${named ?? TITLES[pathname] ?? 'Page not found'} | Orvane Ceramica`
   }, [pathname])
   return null
@@ -95,7 +100,9 @@ export default function App() {
               <Route path="/studio/photo" element={<PhotoStudio />} />
               <Route path="/studio/upload" element={<UploadPage />} />
               <Route path="/studio/insights" element={<InsightsPage />} />
+              <Route path="/dealers/*" element={<DealerPortal />} />
               <Route path="/visualizer" element={<Navigate to="/studio" replace />} />
+              <Route path="/downloads" element={<Downloads />} />
               <Route path="/export" element={<ExportPage />} />
               <Route path="/factory" element={<FactoryPage />} />
               <Route path="/quote" element={<QuotePage />} />

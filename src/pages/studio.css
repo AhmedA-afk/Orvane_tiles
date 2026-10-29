@@ -854,7 +854,8 @@
 
 .ph-controls {
   position: sticky;
-  top: 88px;
+  top: calc(var(--nav-space) + 14px);
+  transition: top 0.6s var(--ease);
   display: grid;
   gap: 22px;
   padding: 18px;
