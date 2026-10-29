@@ -346,7 +346,8 @@
 .spaces-card {
   display: grid;
   gap: 8px;
-  width: min(56vw, 92svh);
+  /* held to the screen's height too, so a short laptop screen keeps the names in the pin */
+  width: min(56vw, 82svh);
   color: inherit;
   text-decoration: none;
 }
@@ -1036,8 +1037,12 @@ html[data-tone='dark'] .chapter-mark {
   .spaces-card {
     width: 82vw;
   }
+  /* the picture takes the height the pin has left once the heading and the
+     card's name are in, so a short phone (or one with its browser bars
+     showing) never cuts the names off */
   .spaces-pic {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: auto;
+    height: clamp(200px, 100svh - 390px, 82vw * 1.25);
   }
 
   .ch > .hero-room {
